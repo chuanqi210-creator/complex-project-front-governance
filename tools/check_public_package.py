@@ -14,16 +14,20 @@ REQUIRED_FILES = [
     "protocol/core_protocol.md",
     "protocol/gate_reference.md",
     "examples/startup_handoff_template.md",
+    "docs/skill_adoption.md",
     "docs/protocol_explainer_site/package.json",
     "docs/protocol_explainer_site/src/App.jsx",
 ]
 
+HOME_PATH_PATTERNS = [
+    re.compile("/" + "Users" + r"/[^\s\"'`<>)]*"),
+    re.compile("/" + "home" + r"/[^\s\"'`<>)]*"),
+    re.compile(r"[A-Za-z]:\\" + "Users" + r"\\[^\s\"'`<>)]*"),
+    re.compile(r"(?:^|[\s\"'`(])(?:" + "Desktop" + "|" + "Documents" + r")/[^\s\"'`<>)]*"),
+]
+
 FORBIDDEN_PATTERNS = [
-    re.compile(r"/Users/"),
-    re.compile(r"Documents/"),
-    re.compile(r"Desktop/"),
-    re.compile(r"ai 科研"),
-    re.compile(r"chuchenqidawang/Documents"),
+    *HOME_PATH_PATTERNS,
     re.compile(r"password\\s*[:=]", re.IGNORECASE),
     re.compile(r"api[_-]?key\\s*[:=]", re.IGNORECASE),
     re.compile(r"token\\s*[:=]", re.IGNORECASE),
@@ -51,8 +55,6 @@ def iter_text_files() -> list[pathlib.Path]:
     files: list[pathlib.Path] = []
     for path in ROOT.rglob("*"):
         if any(part in SKIP_DIRS for part in path.parts):
-            continue
-        if path == pathlib.Path(__file__).resolve():
             continue
         if path.is_file() and path.suffix in TEXT_SUFFIXES:
             files.append(path)

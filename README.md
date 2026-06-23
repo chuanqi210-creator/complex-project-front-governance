@@ -88,9 +88,18 @@ For Chinese-language work:
 - `current_basis`: what can be used as current evidence.
 - `new_domain_governance_builder`: builds a temporary governance lens for an unfamiliar domain.
 - `capability_discovery_cadence_gate`: makes capability discovery explicit at the start and at key transitions.
+- `skill_plugin_discovery_gate`: records which capabilities were considered, selected, rejected, or saved for later.
 - `micro_task_execution_check`: requires a small real task or a clearly justified no-op before major expansion.
 - `claim_readiness_ladder`: prevents source-backed or locally verified evidence from being written as public or production-ready claims.
 - `anti_protocol_bloat_gate`: keeps single-case details in examples or backlog instead of bloating the core protocol.
+
+## Skill and Capability Adoption
+
+The protocol does not assume the current agent already knows the best way to work. At startup, stage changes, blocked verification, external-write boundaries, and final claims, it asks whether a skill, tool, plugin, API, library, subagent, or external method would improve the project.
+
+Capabilities are adopted through a relevant-first smoke test, not by bulk installation. Each candidate is recorded as `adopt_now`, `adapt_later`, `backlog`, or `reject`, with a short reason and a promotion condition.
+
+See [docs/skill_adoption.md](docs/skill_adoption.md) for the public adoption guide.
 
 ## Repository Structure
 
@@ -104,6 +113,7 @@ For Chinese-language work:
 ├── examples/
 │   └── startup_handoff_template.md
 ├── docs/
+│   ├── skill_adoption.md
 │   └── protocol_explainer_site/
 └── tools/
     └── check_public_package.py

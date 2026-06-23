@@ -20,6 +20,10 @@ This reference explains the protocol gates in practical language.
 | `skill_plugin_discovery_gate` | Record candidates, selected tools, rejected tools, instruction-read evidence, and call/skip decisions. |
 | `capability_type_and_side_effect_gate` | Distinguish local read-only skills from plugins, connectors, external writes, installs, and authorization. |
 
+Capability adoption uses a small smoke test before promotion. Record the source, version or reference, micro-task, observed benefit, friction, risk, and one of four decisions: `adopt_now`, `adapt_later`, `backlog`, or `reject`.
+
+Do not promote a single successful tool or skill trial into a required protocol rule. Promote only after repeated cross-project value, and only make it verifier-required when the behavior can be checked reliably by script.
+
 ## Validation Gates
 
 | Gate | Use |

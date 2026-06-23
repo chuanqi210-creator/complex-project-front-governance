@@ -69,10 +69,20 @@ Before execution and at key transitions, reconsider:
 - deferred tools
 - plugins or connectors
 - APIs
+- libraries
 - external methods
 - subagents or review lanes
 
 Record selected, rejected, and backlog capabilities. Do not install or authorize tools just because they exist.
+
+Use a relevant-first smoke test for any promising external capability:
+
+- what small project task it helps with
+- what benefit was observed
+- what friction or side effect it adds
+- whether the decision is `adopt_now`, `adapt_later`, `backlog`, or `reject`
+
+Single-case usefulness belongs in examples or adoption notes. Only repeated cross-project value should become a core protocol rule.
 
 ### 5. Micro Validation
 

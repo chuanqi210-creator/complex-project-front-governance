@@ -60,24 +60,24 @@ const coreOutcomes = [
 
 const assets = [
   {
-    name: "v3 主协议",
-    role: "定义阶段控制、证据矩阵、能力发现、风险边界和恢复规则。",
-    file: "protocol/复杂项目启动前置治理协议_v3_核心版.md",
+    name: "核心协议",
+    role: "定义 intake、current basis、primary claim、evidence map、能力发现、小题验证、风险边界和 handoff。",
+    file: "protocol/core_protocol.md",
   },
   {
-    name: "低摩擦入口",
-    role: "把厚协议压缩成用户可以自然说出的 5 行启动方式。",
-    file: "protocol/复杂项目启动_低摩擦用户入口_20260622.md",
+    name: "Gate 参考",
+    role: "解释常驻、能力、验证、风险和恢复 gate 各自解决什么问题。",
+    file: "protocol/gate_reference.md",
   },
   {
-    name: "路由表与经验库",
-    role: "用大类路由和失败模式校准新项目，不再复制具体领域长模板。",
-    file: "protocol/真实项目压力测试_跨域收束与低摩擦路由表_20260622.md",
+    name: "Skill 采用指南",
+    role: "说明如何发现、试用、采用或拒绝 skill、工具、API、子代理和外部方法。",
+    file: "docs/skill_adoption.md",
   },
   {
-    name: "发布包与验证器",
-    role: "把当前能力、恢复入口、变更清单和本地 verifier 绑定起来。",
-    file: "protocol/前置治理协议发布包_20260622.md",
+    name: "Handoff 模板",
+    role: "给新项目启动结束时留下可恢复的下一步、证据缺口和停止条件。",
+    file: "examples/startup_handoff_template.md",
   },
 ];
 
@@ -205,6 +205,29 @@ const gateTypes = [
     name: "recovery only",
     zh: "恢复链专用",
     examples: "latest board tail check、append EOF、recovery verifier",
+  },
+];
+
+const adoptionSteps = [
+  {
+    title: "发现候选",
+    text: "扫描本地 skill、工具、插件、API、库、子代理和外部方法。",
+    output: "candidates_considered",
+  },
+  {
+    title: "读清边界",
+    text: "先确认说明、调用方式、副作用和是否需要安装、认证或外部写入。",
+    output: "side_effect_gate",
+  },
+  {
+    title: "小题烟测",
+    text: "只用一个当前项目小任务验证它是否真的降低误判、摩擦或恢复风险。",
+    output: "micro_task",
+  },
+  {
+    title: "取舍写回",
+    text: "记录 adopt_now、adapt_later、backlog 或 reject，以及下次晋升条件。",
+    output: "adoption_decision",
   },
 ];
 
@@ -490,6 +513,23 @@ function Mechanism() {
             <code>{step.output}</code>
           </article>
         ))}
+      </section>
+
+      <section className="adoption-section">
+        <div className="section-heading">
+          <p className="section-kicker">能力采用节奏</p>
+          <h2>外部 skill 和工具先小题试用，再决定是否采用。</h2>
+        </div>
+        <div className="adoption-grid">
+          {adoptionSteps.map((step, index) => (
+            <article className="adoption-card" key={step.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <code>{step.output}</code>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="mechanism-grid">
