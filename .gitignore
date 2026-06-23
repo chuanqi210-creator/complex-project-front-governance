@@ -12,6 +12,7 @@ env/
 node_modules/
 dist/
 build/
+.worktrees
 .worktrees/
+worktrees
 worktrees/
-
