@@ -18,12 +18,12 @@ from pathlib import Path
 from typing import Iterable
 
 
-DEFAULT_ROOT = Path("/Users/chuchenqidawang/Documents/ai 科研")
-DEFAULT_PROTOCOL = Path("/Users/chuchenqidawang/Desktop/复杂项目启动前置治理协议_v3_核心版.md")
-DEFAULT_LONG_LOG = DEFAULT_ROOT / "前置治理协议_二十个跨渠道项目逆向校验实验.md"
-DEFAULT_RELEASE = DEFAULT_ROOT / "前置治理协议发布包_20260622.md"
-DEFAULT_CHANGELOG = DEFAULT_ROOT / "持续优化变更清单_20260622.md"
-DEFAULT_ROUTE = DEFAULT_ROOT / "真实项目压力测试_跨域收束与低摩擦路由表_20260622.md"
+DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_PROTOCOL = DEFAULT_ROOT / "protocol" / "复杂项目启动前置治理协议_v3_核心版.md"
+DEFAULT_LONG_LOG = DEFAULT_ROOT / "protocol" / "前置治理协议_二十个跨渠道项目逆向校验实验.md"
+DEFAULT_RELEASE = DEFAULT_ROOT / "protocol" / "前置治理协议发布包_20260622.md"
+DEFAULT_CHANGELOG = DEFAULT_ROOT / "protocol" / "持续优化变更清单_20260622.md"
+DEFAULT_ROUTE = DEFAULT_ROOT / "protocol" / "真实项目压力测试_跨域收束与低摩擦路由表_20260622.md"
 CONTINUOUS_SELF_OPTIMIZATION_FORBIDS = [
     "pending_post_change_scan",
     "pending_stateful_fenced_block_scan",
@@ -48,6 +48,7 @@ CONTINUOUS_SELF_OPTIMIZATION_CORE_REQUIRED = [
     "verify_governance_recovery_tool",
     "subagent_problem_decomposition_builder",
     "source_role_map",
+    "capability_discovery_cadence_gate",
     "skill_plugin_learning_loop",
     "skill_plugin_project_fit_trace",
     "best_practice_learning_contract",

@@ -11,7 +11,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
 
-OUT_DIR = Path("/Users/chuchenqidawang/Documents/ai 科研/outputs/front_governance_protocol_v2")
+OUT_DIR = Path(__file__).resolve().parent
 DOCX_OUT = OUT_DIR / "复杂项目启动前置治理协议_v2_auto_research增强版.docx"
 MD_OUT = OUT_DIR / "复杂项目启动前置治理协议_v2_auto_research增强版.md"
 

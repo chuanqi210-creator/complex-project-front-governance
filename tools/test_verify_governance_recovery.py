@@ -78,6 +78,21 @@ def continuous_required_assignment_value() -> ast.AST:
     raise AssertionError("CONTINUOUS_SELF_OPTIMIZATION_REQUIRED assignment not found")
 
 
+def test_default_paths_resolve_inside_this_repository() -> None:
+    verifier = load_verifier_module()
+    defaults = [
+        verifier.DEFAULT_ROOT,
+        verifier.DEFAULT_PROTOCOL,
+        verifier.DEFAULT_LONG_LOG,
+        verifier.DEFAULT_RELEASE,
+        verifier.DEFAULT_CHANGELOG,
+        verifier.DEFAULT_ROUTE,
+    ]
+
+    for path in defaults:
+        assert path.resolve().is_relative_to(ROOT), path
+
+
 def test_continuous_required_core_fields_are_shared_across_scopes() -> None:
     verifier = load_verifier_module()
     core_required = verifier.CONTINUOUS_SELF_OPTIMIZATION_CORE_REQUIRED
@@ -91,8 +106,10 @@ def test_continuous_required_core_fields_are_shared_across_scopes() -> None:
     assert required == expected_required
 
     assert "agent_topology_selection_trace" in core_required
+    assert "capability_discovery_cadence_gate" in core_required
     for scope in ("protocol", "route", "release", "changelog", "long_log"):
         assert "agent_topology_selection_trace" in required[scope]
+        assert "capability_discovery_cadence_gate" in required[scope]
 
 
 def test_continuous_required_mapping_is_generated_by_builder() -> None:
@@ -214,6 +231,7 @@ def full_fixture(tmp: Path, latest_extra: str = "") -> None:
             "verify_governance_recovery_tool",
             "subagent_problem_decomposition_builder",
             "source_role_map",
+            "capability_discovery_cadence_gate",
             "spawn_preflight",
             "agent_return_status",
             "subagent_lifecycle_ledger",
@@ -250,6 +268,7 @@ def full_fixture(tmp: Path, latest_extra: str = "") -> None:
         "verify_governance_recovery_tool\n"
         "subagent_problem_decomposition_builder\n"
         "source_role_map\n"
+        "capability_discovery_cadence_gate\n"
         "skill_plugin_learning_loop\n"
         "skill_plugin_project_fit_trace\n"
         "best_practice_learning_contract\n"
@@ -281,6 +300,7 @@ def full_fixture(tmp: Path, latest_extra: str = "") -> None:
         "verify_governance_recovery_tool\n"
         "subagent_problem_decomposition_builder\n"
         "source_role_map\n"
+        "capability_discovery_cadence_gate\n"
         "skill_plugin_learning_loop\n"
         "skill_plugin_project_fit_trace\n"
         "best_practice_learning_contract\n"
@@ -318,6 +338,7 @@ def full_fixture(tmp: Path, latest_extra: str = "") -> None:
         "verify_governance_recovery_tool\n"
         "subagent_problem_decomposition_builder\n"
         "source_role_map\n"
+        "capability_discovery_cadence_gate\n"
         "subagent_lifecycle_ledger\n"
         "skill_plugin_learning_loop\n"
         "skill_plugin_project_fit_trace\n"
@@ -355,6 +376,7 @@ def full_fixture(tmp: Path, latest_extra: str = "") -> None:
         "verify_governance_recovery_tool\n"
         "subagent_problem_decomposition_builder\n"
         "source_role_map\n"
+        "capability_discovery_cadence_gate\n"
         "subagent_lifecycle_ledger\n"
         "skill_plugin_learning_loop\n"
         "skill_plugin_project_fit_trace\n"
@@ -1438,7 +1460,26 @@ def test_preset_fails_when_software_delivery_state_boundary_guard_missing() -> N
         assert "long_log_contains:software_delivery_state_boundary_guard" in failed_names
 
 
+def capability_discovery_cadence_gate_missing_fixture(tmp: Path) -> None:
+    full_fixture(tmp)
+    remove_required_field_from_fixture(tmp, "capability_discovery_cadence_gate")
+
+
+def test_preset_fails_when_capability_discovery_cadence_gate_missing() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        tmp = Path(raw)
+        capability_discovery_cadence_gate_missing_fixture(tmp)
+        result = run_verifier(tmp)
+        payload = json.loads(result.stdout)
+        assert result.returncode == 1, payload
+        failed_names = {item["name"] for item in payload["failures"]}
+        assert "protocol_contains:capability_discovery_cadence_gate" in failed_names
+        assert "route_contains:capability_discovery_cadence_gate" in failed_names
+        assert "long_log_contains:capability_discovery_cadence_gate" in failed_names
+
+
 if __name__ == "__main__":
+    test_default_paths_resolve_inside_this_repository()
     test_continuous_required_core_fields_are_shared_across_scopes()
     test_continuous_required_mapping_is_generated_by_builder()
     test_continuous_required_scope_extras_match_spec()
@@ -1465,4 +1506,5 @@ if __name__ == "__main__":
     test_preset_fails_when_data_artifact_lineage_freshness_guard_missing()
     test_preset_fails_when_field_evidence_status_missing()
     test_preset_fails_when_software_delivery_state_boundary_guard_missing()
+    test_preset_fails_when_capability_discovery_cadence_gate_missing()
     print("ok")
