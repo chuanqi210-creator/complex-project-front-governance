@@ -1,0 +1,70 @@
+{
+  "version": "2026-06-30",
+  "purpose": "Complex Runtime Kit capability candidates for project-level continuous governance. This file is a discovery aid, not proof that a skill, tool, plugin, connector, or API is callable in the current environment.",
+  "capabilities": [
+    {
+      "name": "complex_protocol_onboarding",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A new project asks to use Complex, Auto Research, or this repository as a governing method.",
+      "boundary": "Read the relevant protocol components first, then bind only the parts that fit the current project.",
+      "verification_hint": "Confirm the project has a state, evidence, decision, loop, and delivery skeleton before business execution starts."
+    },
+    {
+      "name": "capability_discovery_cadence",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "Starting a task, changing phase, hitting a blocker, approaching an external write, crossing a subagent boundary, or making a final claim.",
+      "boundary": "Do not force tool usage; record selected, rejected, backlog, and manual-action candidates.",
+      "verification_hint": "Check that named skills, tools, APIs, accounts, browsers, or databases were explicitly considered."
+    },
+    {
+      "name": "local_file_search",
+      "type": "local_tool",
+      "status": "recommended",
+      "use_when": "Repository facts, protocol anchors, templates, history records, or validation scripts can answer the question locally.",
+      "boundary": "Prefer local truth before asking the user or relying on memory.",
+      "verification_hint": "Use focused searches such as rg, rg --files, sed, find, or repository-specific scripts."
+    },
+    {
+      "name": "governance_recovery_verifier",
+      "type": "local_tool",
+      "status": "recommended",
+      "use_when": "Protocol, release package, recovery chain, or machine-board references are edited.",
+      "boundary": "This verifies structural recovery health; it does not prove a human-facing deliverable is good.",
+      "verification_hint": "Run tools/test_verify_governance_recovery.py and the relevant verify_governance_recovery.py preset."
+    },
+    {
+      "name": "runtime_templates",
+      "type": "template",
+      "status": "recommended",
+      "use_when": "A project needs lightweight records for state, evidence, decisions, search, questions, loop checks, or delivery contracts.",
+      "boundary": "Templates are optional landing pads, not new mandatory protocol fields.",
+      "verification_hint": "Confirm the project can resume from state.md and can justify claims through evidence.md and decision.md."
+    },
+    {
+      "name": "browser_or_institutional_access",
+      "type": "connector",
+      "status": "manual_action",
+      "use_when": "Public search is insufficient and the user names browser access, Scholar, database access, institutional accounts, or uploaded materials.",
+      "boundary": "The agent must not handle passwords or bypass authorization; user login and sensitive account actions stay manual.",
+      "verification_hint": "Record what page or source the user should open and what evidence should be returned after access."
+    },
+    {
+      "name": "subagent_or_thread_coordination",
+      "type": "external_method",
+      "status": "environment_dependent",
+      "use_when": "Independent evidence lanes, review loops, temporary subagents, or long-running Codex threads would reduce risk or latency.",
+      "boundary": "Do not assume subagents or threads are callable; probe capability and define contracts before delegation.",
+      "verification_hint": "Record topology choice, context packet, output contract, integration responsibility, and cleanup or stop condition."
+    },
+    {
+      "name": "document_or_render_qa",
+      "type": "skill",
+      "status": "environment_dependent",
+      "use_when": "The final artifact is a Word document, PDF, slide deck, image, website, or other rendered deliverable.",
+      "boundary": "Rendering tools vary by environment; do not claim visual QA without fresh evidence.",
+      "verification_hint": "Check source/render freshness, output path, page or screenshot evidence, and residual warnings."
+    }
+  ]
+}

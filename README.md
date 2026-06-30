@@ -17,12 +17,23 @@
 
 - 把复杂项目的目标对齐、证据分层、能力发现、动态路由、Loop 小闭环、评分迭代、协作拓扑、恢复链和交付边界放在一个小而清楚的项目里。
 - 让 Codex 可以围绕该协议单独开工作树、持续迭代、测试和发布。
+- 提供 Complex Runtime Kit / 持续治理运行时套件，让新项目能直接建立状态、证据、决策、检索、提问、Loop 和交付记录。
 - 避免继续依赖或修改 `ai 科研` 大目录。
+
+## 三层结构
+
+1. `protocol/`：Complex 持续治理核心规则，决定项目如何恢复、路由、评分、协作和交付。
+2. `templates/`：Runtime Kit 运行模板，帮助新项目快速建立 state、evidence、decision、search、question、loop 和 delivery 记录。
+3. `.codex/`：项目级能力发现入口，记录推荐能力候选和项目本地 skill 放置规则；它不替代实际环境中的工具探测。
 
 ## 目录
 
+- `.codex/shared-skills.json`：项目级能力候选清单，用于启动能力盘点，不声称所有能力当前可调用。
+- `.codex/skills/`：项目本地 skill 放置区；当前仅保留说明，未来新增 skill 必须绑定真实项目缺口和小题验证。
 - `protocol/`：协议核心文档、v3 主协议、低摩擦入口、发布包、自测记录、经验库索引。
 - `protocol/Complex项目持续治理协议_v3_核心版.md`：当前权威主协议。
+- `templates/`：Runtime Kit 轻量模板，供新项目复制或引用。
+- `docs/runtime-skill-management.md`：运行时 skill / tool / plugin / API / 外部方法选择、拒绝、试用和写回规则。
 - `docs/history/`：从旧目录同步来的历史回归记录、真实项目小题和治理样例。
 - `docs/migration/`：独立化迁移清单和路径说明。
 - `docs/Complex协议复盘与优化人看版_20260629.md`：新能源汽车项目作为例子的 Complex 协议人看版复盘。
@@ -36,9 +47,10 @@
 1. 改协议前先看 `protocol/持续治理协议发布包_20260622.md`。
 2. 涉及历史恢复链时看 `protocol/持续优化变更清单_20260622.md`。
 3. 新项目要求读取 Complex 或 Auto Research 时，先理解低摩擦入口、阶段流程、动态路由、能力发现、子代理/线程、Loop/评分和交付拆分规则，再开始业务执行。
-4. 用户提到外部工具、skill、API、数据库、账号、浏览器、机构权限或 Auto Research 时，先建立能力候选清单，写清 selected / rejected / backlog / manual action。
-5. 修改后运行工具或结构检查，记录结果。
-6. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
+4. 如果新项目需要运行时骨架，复制或引用 `templates/` 中的 state、evidence、decision、search、question、loop 和 delivery 模板。
+5. 用户提到外部工具、skill、API、数据库、账号、浏览器、机构权限或 Auto Research 时，先建立能力候选清单，写清 selected / rejected / backlog / manual action。
+6. 修改后运行工具或结构检查，记录结果。
+7. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
 
 ## 验证命令
 

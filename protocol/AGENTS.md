@@ -13,14 +13,17 @@ This directory contains the current authoritative Complex project continuous-gov
 - Ask before irreversible deletion, account/security/privacy changes, password entry, publishing/submitting, payments, or destructive commands.
 - Verify outputs before reporting completion, especially rendered documents, generated images, archives, and converted files.
 - At protocol task start, stage changes, blockers, verification failures, subagent/tool boundaries, and before final claims, actively reconsider useful skills, tools, plugins, connectors, APIs, libraries, scripts, and external methods; use small smoke tests before adopting anything new.
+- For runtime capability work, use `.codex/shared-skills.json` as a candidate list only; still verify actual callable tools and side-effect boundaries in the current environment.
 - When users mention external tools, skills, APIs, databases, browser access, accounts, Auto Research, or Complex, convert those hints into an explicit capability list with selected, rejected, backlog, and manual-action items before executing.
-- When a new project asks to read Complex or Auto Research, first understand the relevant protocol components, tool boundaries, and delivery rules; shallow acknowledgment is not enough.
+- When a new project asks to read Complex or Auto Research, first understand the relevant protocol components, tool boundaries, Loop/scoring rules, runtime templates, and delivery rules; shallow acknowledgment is not enough.
 - For human-readable deliverables, keep protocol jargon, machine board fields, and internal state out of the main explanation unless they are necessary for the reader's decision.
 - For comments, teacher-facing notes, third-party summaries, or mixed human/machine outputs, align audience, purpose, granularity, tone, and internal-information boundary before final delivery.
 
 ## File Placement
 
 - Keep protocol artifacts inside this repository when one is clear.
+- Put Runtime Kit templates in `templates/` and runtime capability notes in `docs/runtime-skill-management.md`.
+- Put project-level capability manifests and optional local skills in `.codex/`.
 - Put copied historical records in `docs/history/` and migration notes in `docs/migration/`.
 - Use `/Users/chuchenqidawang/Documents/日常/03_产出_Deliverables/` for general final deliverables that do not belong to a specific research project.
 - Use `/Users/chuchenqidawang/Documents/日常/00_入口_Inbox/Codex抓取待复核/` for uncertain captures or external materials pending review.
