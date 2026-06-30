@@ -1,19 +1,20 @@
-# Complex Project Front Governance
+# Complex Project Continuous Governance
 
-> A lightweight front-governance protocol for turning ambiguous, high-stakes project ideas into executable launch plans before implementation begins.
+> A lightweight continuous-governance protocol for turning ambiguous, high-stakes project ideas into recoverable, evidence-backed progress loops.
 
-复杂项目最危险的地方，往往不是执行中写错一步，而是启动前没有说清楚：项目到底要证明什么、证据够不够、哪些工具该用、哪些风险不能越级、什么时候该停。这个仓库把这些启动前判断整理成一套可复用协议。
+复杂项目最危险的地方，往往不是执行中写错一步，而是推进过程中没有持续说清楚：项目到底要证明什么、证据够不够、哪些工具该用、哪些风险不能越级、每一轮验证了什么、什么时候该回退或停止。这个仓库把这些持续治理判断整理成一套可复用协议。
 
 ## What It Does
 
-Complex Project Front Governance helps an AI agent or project lead do six things before execution:
+Complex Project Continuous Governance helps an AI agent or project lead do seven things across a project loop:
 
 1. Define the core claim the project is trying to prove.
 2. Separate current evidence from drafts, history, assumptions, and generated output.
 3. Discover useful skills, tools, plugins, APIs, external methods, and review lanes at the right time.
 4. Run a small validation task before committing to a large plan.
 5. Draw explicit risk and claim-readiness boundaries.
-6. Produce a recoverable launch handoff with next steps, evidence gaps, and stop conditions.
+6. Use dynamic routing and scoring to decide whether to execute, deepen, route back, or stop.
+7. Produce a recoverable handoff with next steps, evidence gaps, loop results, and stop conditions.
 
 ## Workflow Map
 
@@ -25,7 +26,7 @@ flowchart LR
   D --> E["Capability discovery<br/>skill / tool / plugin / API / external method"]
   E --> F["Micro validation<br/>5-30 分钟小题验证"]
   F --> G["Risk boundary<br/>不能外推、需要授权、需要降级"]
-  G --> H["Launch handoff<br/>启动方案、下一步、恢复入口"]
+  G --> H["Recoverable handoff<br/>行动方案、下一步、恢复入口"]
 
   C -. if new domain .-> I["New-domain governance builder<br/>为陌生领域生成临时治理镜头"]
   E -. if independent evidence lanes .-> J["Read-only subagents<br/>并行只读审计，主代理整合"]
@@ -43,16 +44,18 @@ flowchart LR
 | Capability discovery | Reconsider skills, tools, plugins, APIs, and subagents at the start and at key transitions. | Tool tunnel vision, missing useful capabilities, or installing tools without a reason. | Selected, rejected, and backlog capabilities. |
 | Micro validation | Test the riskiest assumption with a small task before expanding scope. | Building a large plan around an untested assumption. | Micro-task result, observed gap, downgrade rule. |
 | Risk boundary | Write what cannot be concluded and what needs authorization. | Overclaiming deployment, public impact, safety, privacy, or production readiness. | Downgrade rule, manual action, external-state guard. |
-| Launch handoff | Leave a recoverable next route. | Losing context when another agent or future session continues. | Human-readable summary and machine-readable next route. |
+| Dynamic route | Decide whether this round should execute, deepen, route back, ask the user, or stop. | Treating every change as linear progress. | Scoring result, route event, next route. |
+| Recoverable handoff | Leave a recoverable next route. | Losing context when another agent or future session continues. | Human-readable summary and machine-readable next route. |
 
-## How It Differs From Ordinary Project Kickoff
+## How It Differs From Ordinary Project Management
 
-| Ordinary kickoff | Front-governed kickoff |
+| Ordinary project flow | Continuous-governed flow |
 | --- | --- |
 | Starts with tasks and deliverables. | Starts with the claim, evidence, and boundary of the project. |
 | Treats available materials as mostly usable. | Separates authoritative input from background, history, and generated candidates. |
 | Uses tools opportunistically. | Reconsiders capabilities at startup, stage transitions, blocked verification, external write boundaries, and final claims. |
 | Validates late. | Runs a small validation task before committing to high-cost execution. |
+| Keeps pushing once a plan exists. | Uses scoring and route-back rules to decide whether to execute, deepen, revise, or stop. |
 | Writes polished conclusions early. | Binds conclusions to claim-readiness levels and downgrade rules. |
 | Depends on chat memory. | Produces a handoff that another session can recover. |
 
@@ -66,9 +69,9 @@ Goal: ...
 Materials: ...
 Expected result: ...
 
-Please run the front-governance protocol first.
+Please run the Complex continuous-governance protocol.
 Do not jump directly into the final deliverable.
-Keep the user-facing process lightweight, but write down the evidence, risks, and next route.
+Keep the user-facing process lightweight, but write down the evidence, risks, loop result, and next route.
 ```
 
 For Chinese-language work:
@@ -79,7 +82,7 @@ For Chinese-language work:
 已有材料在：……
 我希望结果达到：……
 
-请先按复杂项目启动前置治理协议推进。
+请按 Complex 项目持续治理协议推进。
 不要直接写最终成品，不要把流程负担转嫁给我。
 ```
 
