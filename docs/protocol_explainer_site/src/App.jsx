@@ -48,7 +48,7 @@ const coreOutcomes = [
   },
   {
     title: "把能力发现显性化",
-    text: "启动时和关键阶段复盘 skill、工具、插件、API、子代理和外部方法，不靠临时想起，也不机械搜工具。",
+    text: "任务开始、阶段切换、阻塞、验证失败和最终主张前复盘 skill、工具、插件、API、子代理和外部方法，不靠临时想起，也不机械搜工具。",
     icon: PuzzlePiece,
   },
   {
@@ -61,13 +61,13 @@ const coreOutcomes = [
 const assets = [
   {
     name: "v3 主协议",
-    role: "定义阶段控制、证据矩阵、能力发现、风险边界和恢复规则。",
-    file: "protocol/复杂项目启动前置治理协议_v3_核心版.md",
+    role: "定义动态阶段控制、证据矩阵、能力发现、Loop 小闭环、评分迭代、风险边界和恢复规则。",
+    file: "protocol/Complex项目持续治理协议_v3_核心版.md",
   },
   {
     name: "低摩擦入口",
-    role: "把厚协议压缩成用户可以自然说出的 5 行启动方式。",
-    file: "protocol/复杂项目启动_低摩擦用户入口_20260622.md",
+    role: "把厚协议压缩成用户可以自然说出的持续治理入口。",
+    file: "protocol/Complex项目持续治理_低摩擦用户入口_20260622.md",
   },
   {
     name: "路由表与经验库",
@@ -77,7 +77,7 @@ const assets = [
   {
     name: "发布包与验证器",
     role: "把当前能力、恢复入口、变更清单和本地 verifier 绑定起来。",
-    file: "protocol/前置治理协议发布包_20260622.md",
+    file: "protocol/持续治理协议发布包_20260622.md",
   },
 ];
 
@@ -180,7 +180,7 @@ const mechanismSteps = [
   {
     k: "07",
     title: "收束与恢复",
-    text: "输出启动方案、证据矩阵、风险边界、下一步路由、发布包状态和机器看版。",
+    text: "输出本轮行动方案、证据矩阵、风险边界、下一步路由、发布包状态和机器看版。",
     output: "handoff + verifier",
   },
 ];
@@ -224,7 +224,7 @@ const scenarios = [
     icon: BracketsCurly,
     claim: "代码、PR、CI、release 或 package 到底证明了哪一级交付状态。",
     lenses: ["execution_validation", "operation_handoff", "software_delivery_state_boundary_guard", "integration_lifecycle_gate"],
-    outputs: ["issue/PR/CI/release 状态表", "部署与真实使用缺口", "rollback/monitoring 边界", "交付启动清单"],
+    outputs: ["issue/PR/CI/release 状态表", "部署与真实使用缺口", "rollback/monitoring 边界", "交付推进清单"],
     downgrade: "PR 合并或 CI 通过不能外推为生产可用；缺 release、deployment、usage 证据时必须停在对应状态。",
   },
   {
@@ -266,9 +266,9 @@ const scenarios = [
 ];
 
 const comparisonRows = [
-  ["启动方式", "先讨论方案或直接执行", "先建立主张、证据、资源边界和阶段路由"],
+  ["推进方式", "先讨论方案或直接执行", "先建立主张、证据、资源边界和阶段路由"],
   ["项目范围", "容易被当前材料或熟悉领域收窄", "用新领域构造器覆盖真实项目与跨域场景"],
-  ["工具使用", "临时想起、临时调用、难复盘", "启动与阶段切换时显性复盘能力候选和拒绝理由"],
+  ["工具使用", "临时想起、临时调用、难复盘", "任务开始与阶段切换时显性复盘能力候选和拒绝理由"],
   ["风险管理", "执行后才发现证据、授权或交付边界不够", "执行前给出 downgrade_rule 和 claim readiness"],
   ["复杂度控制", "要么过度表格化，要么完全黑箱", "机器字段内部承担，用户可见层压缩到高杠杆信息"],
   ["停止条件", "持续优化容易空转", "有 trigger-based continuation 和 iteration quality bar"],
@@ -313,8 +313,8 @@ function Header({ route, go }) {
           <RocketLaunch size={24} weight="fill" />
         </span>
         <span>
-          <strong>项目启动前置治理</strong>
-          <small>Complex Project Front Governance</small>
+          <strong>Complex 项目持续治理</strong>
+          <small>Complex Project Continuous Governance</small>
         </span>
       </button>
       <nav className="main-nav" aria-label="页面导航">
@@ -341,12 +341,12 @@ function Overview({ go }) {
   return (
     <div className="page-stack">
       <section className="hero-section">
-        <img className="hero-image" src={blueprintImage} alt="项目启动蓝图视觉图，展示证据地图、风险边界和六步治理流程" />
+        <img className="hero-image" src={blueprintImage} alt="项目治理蓝图视觉图，展示证据地图、风险边界和持续治理流程" />
         <div className="hero-overlay">
-          <p className="eyebrow">适用于复杂项目启动前</p>
-          <h1>把复杂项目，从模糊想法变成可执行启动方案</h1>
+          <p className="eyebrow">适用于复杂项目持续推进</p>
+          <h1>把复杂项目，从模糊想法推进到可验证结果</h1>
           <p className="hero-copy">
-            这套前置治理协议不是一份普通项目清单，而是一套启动前的判断系统：它先看清目标、证据、能力、风险和停止条件，再让项目进入执行。
+            这套持续治理协议不是一份普通项目清单，而是一套持续推进的控制系统：它在每一轮看清目标、证据、能力、风险、验证结果和下一步路线，再决定执行、加深、回退或停止。
           </p>
           <div className="hero-actions">
             <button className="primary-action" type="button" onClick={() => go("mechanism")}>
@@ -362,9 +362,9 @@ function Overview({ go }) {
       <section className="intro-grid">
         <div className="intro-panel">
           <p className="section-kicker">它解决的问题</p>
-          <h2>复杂项目最大的风险，往往发生在“开始之前”。</h2>
+          <h2>复杂项目最大的风险，往往来自“已经开始却没有持续对齐”。</h2>
           <p>
-            项目初期最容易把目标说大、把证据看轻、把工具当能力、把一次输出当真实成效。前置治理协议把这些隐性风险提前显性化，并把下一步压缩成一个能执行、能验证、能恢复的启动方案。
+            项目推进中最容易把目标说大、把证据看轻、把工具当能力、把一次输出当真实成效。持续治理协议把这些隐性风险持续显性化，并把下一步压缩成一个能执行、能验证、能恢复的行动方案。
           </p>
         </div>
         <div className="signal-list">
@@ -383,7 +383,7 @@ function Overview({ go }) {
       <section className="deliverables-section">
         <div className="section-heading">
           <p className="section-kicker">最终交付给项目的东西</p>
-          <h2>不是更多流程，而是更清楚的启动条件。</h2>
+          <h2>不是更多流程，而是更清楚的行动条件。</h2>
         </div>
         <div className="deliverable-grid">
           {[
@@ -429,7 +429,7 @@ function Capabilities() {
     <div className="content-page">
       <PageTitle
         label="协议能做什么"
-        title="它把项目启动前的关键治理工作，拆成可执行能力。"
+        title="它把项目持续推进中的关键治理工作，拆成可执行能力。"
         copy="这些能力不是每次全量展开。协议会按项目风险、阶段深度和用户摩擦动态激活，确保重项目不失控，小项目不过度治理。"
       />
       <div className="capability-layout">
@@ -460,7 +460,7 @@ function Capabilities() {
                 <p>{item.detail}</p>
                 <div className="detail-note">
                   <strong>项目作用</strong>
-                  <span>让启动方案更可追踪、可验证、可降级，不靠一次性判断赌方向。</span>
+                  <span>让行动方案更可追踪、可验证、可降级，不靠一次性判断赌方向。</span>
                 </div>
               </article>
             ))}
@@ -476,7 +476,7 @@ function Mechanism() {
       <PageTitle
         label="实现方法"
         title="协议内部是一组低摩擦 gate、路由器和恢复链。"
-        copy="它先决定本轮需要多深，再选择必要的证据镜头、能力发现、小题验证和风险边界。核心不是多填表，而是防止项目在错误层级上启动。"
+        copy="它先决定本轮需要多深，再选择必要的证据镜头、能力发现、小题验证和风险边界。核心不是多填表，而是防止项目在错误层级上推进。"
       />
 
       <section className="timeline">
@@ -496,7 +496,7 @@ function Mechanism() {
         <article className="mechanism-panel">
           <h2>动态激活，而不是全量硬跑</h2>
           <p>
-            `gate_activation_matrix` 把规则分成四类：常驻最小、风险触发、连续优化专用、恢复链专用。这样协议既能覆盖复杂项目，又不会让普通启动变成流程负担。
+            `gate_activation_matrix` 把规则分成四类：常驻最小、风险触发、连续优化专用、恢复链专用。这样协议既能覆盖复杂项目，又不会让普通推进变成流程负担。
           </p>
           <div className="gate-grid">
             {gateTypes.map((gate) => (
@@ -539,7 +539,7 @@ function Scenarios() {
     <div className="content-page">
       <PageTitle
         label="适用场景"
-        title="它不是单一领域模板，而是新项目启动的通用治理方式。"
+        title="它不是单一领域模板，而是复杂项目推进的通用治理方式。"
         copy="协议默认按最终主张选择主类，再叠加高风险标签。下面每个场景都展示它会优先检查什么、输出什么、以及不能外推到哪里。"
       />
 
@@ -601,15 +601,15 @@ function Advantages() {
     <div className="content-page">
       <PageTitle
         label="对比优势"
-        title="它比普通项目启动更稳，也比厚重流程更轻。"
-        copy="前置治理协议的优势不在于字段多，而在于它把常见误判前移，把风险语言降级，把能力发现和恢复链变成可复用机制。"
+        title="它比普通项目推进更稳，也比厚重流程更轻。"
+        copy="持续治理协议的优势不在于字段多，而在于它把常见误判持续显性化，把风险语言降级，把能力发现、Loop 验证和恢复链变成可复用机制。"
       />
 
       <section className="comparison-card">
         <div className="comparison-header">
           <span>对比维度</span>
-          <span>普通启动</span>
-          <span>前置治理协议</span>
+          <span>普通推进</span>
+          <span>持续治理协议</span>
         </div>
         {comparisonRows.map(([dimension, ordinary, governed]) => (
           <div className="comparison-row" key={dimension}>
@@ -628,8 +628,8 @@ function Advantages() {
             icon: Path,
           },
           {
-            title: "比项目管理清单更前置",
-            text: "它不只问任务拆分和时间线，还先判断哪些主张能成立、证据缺什么、风险能不能越级。",
+            title: "比项目管理清单更重证据",
+            text: "它不只问任务拆分和时间线，还持续判断哪些主张能成立、证据缺什么、风险能不能越级。",
             icon: ArrowsSplit,
           },
           {
@@ -681,7 +681,7 @@ export function App() {
       <main>{page}</main>
       <footer className="site-footer">
         <div>
-          <strong>复杂项目启动前置治理协议</strong>
+          <strong>Complex 项目持续治理协议</strong>
           <p>当前页面用于解释协议价值与实现方法，不替代协议正文、发布包或恢复链验证。</p>
         </div>
         <button className="secondary-action compact" type="button" onClick={() => go("overview")}>

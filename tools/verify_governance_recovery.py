@@ -19,9 +19,9 @@ from typing import Iterable
 
 
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PROTOCOL = DEFAULT_ROOT / "protocol" / "复杂项目启动前置治理协议_v3_核心版.md"
-DEFAULT_LONG_LOG = DEFAULT_ROOT / "protocol" / "前置治理协议_二十个跨渠道项目逆向校验实验.md"
-DEFAULT_RELEASE = DEFAULT_ROOT / "protocol" / "前置治理协议发布包_20260622.md"
+DEFAULT_PROTOCOL = DEFAULT_ROOT / "protocol" / "Complex项目持续治理协议_v3_核心版.md"
+DEFAULT_LONG_LOG = DEFAULT_ROOT / "protocol" / "持续治理协议_二十个跨渠道项目逆向校验实验.md"
+DEFAULT_RELEASE = DEFAULT_ROOT / "protocol" / "持续治理协议发布包_20260622.md"
 DEFAULT_CHANGELOG = DEFAULT_ROOT / "protocol" / "持续优化变更清单_20260622.md"
 DEFAULT_ROUTE = DEFAULT_ROOT / "protocol" / "真实项目压力测试_跨域收束与低摩擦路由表_20260622.md"
 CONTINUOUS_SELF_OPTIMIZATION_FORBIDS = [

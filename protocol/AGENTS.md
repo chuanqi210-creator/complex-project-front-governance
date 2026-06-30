@@ -2,7 +2,7 @@
 
 ## Workspace Purpose
 
-This directory contains the current authoritative front-governance protocol files for this repository. Preserve traceability while keeping active protocol work local to this project.
+This directory contains the current authoritative Complex project continuous-governance protocol files for this repository. Preserve traceability while keeping active protocol work local to this project.
 
 ## Operating Defaults
 
@@ -28,4 +28,4 @@ This directory contains the current authoritative front-governance protocol file
 
 ## Reference Protocol
 
-Use repository-local protocol files as the active governance source. External file-management rules may provide background defaults, but this repository owns current front-governance protocol maintenance.
+Use repository-local protocol files as the active governance source. External file-management rules may provide background defaults, but this repository owns current continuous-governance protocol maintenance.

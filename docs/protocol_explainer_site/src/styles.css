@@ -937,7 +937,7 @@ code {
     color: #7d8a86;
     font-size: 12px;
     font-weight: 780;
-    content: "普通启动";
+    content: "普通推进";
   }
 
   .comparison-row p:nth-of-type(2)::before {
@@ -946,7 +946,7 @@ code {
     color: #006f55;
     font-size: 12px;
     font-weight: 780;
-    content: "前置治理协议";
+    content: "持续治理协议";
   }
 
   .timeline-step {
