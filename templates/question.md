@@ -34,7 +34,7 @@ User-visible trigger guide:
 > Independent review means context separation every review beat. If clean context, a read-only audit lane, or a fact-ledger-only packet is unavailable, label the result as same-session diagnostic review instead of independent review.
 > In downstream repositories, steering words must be reconciled with local project boundaries. A true external-input/manual-action gate blocks only unsafe or impossible work; the agent should still run allowed residual beats before pausing.
 > Plan mode must design an orchestration contract when continuous cadence, Goal mode, long-running threads, subagents, automation, or independent review are requested. Subagents are short-lived workers; user-visible long-running Codex threads and automations are different resources with different authorization boundaries.
-> When scanning Complex from another project, resolve the authoritative Complex source separately from the target project. Prefer the user-provided path, then `COMPLEX_HOME`, then `/Users/chuchenqidawang/Documents/complex-project-front-governance`, then sibling Complex repository names. A target repo with no `Complex` directory does not mean Complex is unavailable.
+> When scanning Complex from another project, resolve the authoritative Complex source separately from the target project. Prefer the user-provided path, then `COMPLEX_HOME`, then common install paths such as `~/Documents/complex-project-front-governance`, then sibling Complex repository names. A target repo with no `Complex` directory does not mean Complex is unavailable.
 
 ## Complex Prompt Bootstrap Card
 

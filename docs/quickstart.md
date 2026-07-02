@@ -17,7 +17,7 @@ Remember the one-sentence model:
 
 > Complex = strong-autonomy continuous execution with evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
 
-If you are inside a downstream target project, resolve the Complex source before scanning the project. Prefer an explicit user path, then `COMPLEX_HOME`, then `/Users/chuchenqidawang/Documents/complex-project-front-governance`. If those paths are unavailable, look for sibling repos named `complex-project-front-governance` or `complex-project-continuous-governance`, then ask the user for the path. A target repo without a `Complex` directory only lacks a local copy; it does not prove Complex is unavailable.
+If you are inside a downstream target project, resolve the Complex source before scanning the project. Prefer an explicit user path, then `COMPLEX_HOME`, then common local install paths such as `~/Documents/complex-project-front-governance`. If those paths are unavailable, look for sibling repos named `complex-project-front-governance` or `complex-project-continuous-governance`, then ask the user for the path. A target repo without a `Complex` directory only lacks a local copy; it does not prove Complex is unavailable.
 
 ## Minute 1-2: Use The Behavior Kernel
 
@@ -116,7 +116,7 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 
 ```text
 请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
-Complex 权威来源优先使用我提供的路径；如果没有提供，先查 `COMPLEX_HOME`，再查 /Users/chuchenqidawang/Documents/complex-project-front-governance。请分开读取 Complex 协议源和目标项目材料：Complex 源读 README.md、protocol/current-state.md、docs/quickstart.md、protocol/core.md、templates、behavior cases 和 examples；目标项目再读它自己的 AGENTS.md、CONTEXT.md、状态文件、manifest、stage board 和代码。不要因为目标项目里没有 Complex 目录就说找不到 Complex；如果权威路径不可访问，再向我索要路径。
+Complex 权威来源优先使用我提供的路径；如果没有提供，先查 `COMPLEX_HOME`，再查 `~/Documents/complex-project-front-governance`。请分开读取 Complex 协议源和目标项目材料：Complex 源读 README.md、protocol/current-state.md、docs/quickstart.md、protocol/core.md、templates、behavior cases 和 examples；目标项目再读它自己的 AGENTS.md、CONTEXT.md、状态文件、manifest、stage board 和代码。不要因为目标项目里没有 Complex 目录就说找不到 Complex；如果权威路径不可访问，再向我索要路径。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
 请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；少问我 / 能推进就继续 / 我给目录你自己读；自动启用合适子代理 / 只读审核线程 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；目标仓库边界对账 / 真人工边界 / 剩余可自动小拍；编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition；只要人看版。
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。

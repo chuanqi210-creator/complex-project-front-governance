@@ -79,7 +79,7 @@ const assets = [
   },
   {
     name: "行为回归包",
-    role: "用 11 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    role: "用 15 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior-regression-cases.json",
   },
   {
@@ -158,7 +158,7 @@ const capabilityGroups = [
     title: "行为回归与黄金样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 11 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill、model_discovery 和 independent_review 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 15 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill、model_discovery 和 independent_review 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];

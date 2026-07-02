@@ -1,4 +1,4 @@
-source visual truth path: /Users/chuchenqidawang/.codex/generated_images/019ef27e-bda9-76c1-b270-31589d0b703b/ig_07da69e6ef86b7ed016a3a560af344819aaee99e10bc2ab89d.png
+source visual truth path: local generated reference used during design QA; path intentionally omitted from the public repository.
 implementation screenshot path: blocked
 viewport: intended desktop 1440x1024 plus responsive CSS breakpoints at 980px and 680px
 state: production preview at http://127.0.0.1:8765/

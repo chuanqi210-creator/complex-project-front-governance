@@ -519,8 +519,8 @@
           "any": ["complex_source_resolution", "Complex 来源解析", "权威来源", "authoritative Complex source"]
         },
         {
-          "label": "authoritative local path",
-          "any": ["/Users/chuchenqidawang/Documents/complex-project-front-governance", "complex-project-front-governance", "complex-project-continuous-governance"]
+          "label": "authoritative portable path",
+          "any": ["COMPLEX_HOME", "~/Documents/complex-project-front-governance", "complex-project-front-governance", "complex-project-continuous-governance"]
         },
         {
           "label": "separate contexts",
