@@ -146,6 +146,7 @@ Ask or default only route-changing choices:
 
 `user_visible_trigger_guide` means steering words are visible to users, not hidden commands:
 
+- `开启 Plan 模式 / 先规划再执行`
 - `先设计提示词/prompt`
 - `模型发现型 / 先发散研究框架 / 不要早收敛`
 - `证据填充型 / 模型和指标已定`

@@ -103,7 +103,8 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 
 ```text
 请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
-请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；少问我 / 能推进就继续 / 我给目录你自己读；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
+请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；少问我 / 能推进就继续 / 我给目录你自己读；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
 如果缺少我的确认，请给出少量可默认的问题；可逆、低副作用的细节由你自行判断，高风险、授权、外部写入、不可逆动作和公开口径变化再问我。
 如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
