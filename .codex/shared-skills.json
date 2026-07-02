@@ -38,17 +38,17 @@
       "name": "local_file_search",
       "type": "local_tool",
       "status": "recommended",
-      "use_when": "Repository facts, protocol anchors, templates, history records, or validation scripts can answer the question locally.",
+      "use_when": "Repository facts, protocol anchors, templates, examples, or validation scripts can answer the question locally.",
       "boundary": "Prefer local truth before asking the user or relying on memory.",
       "verification_hint": "Use focused searches such as rg, rg --files, sed, find, or repository-specific scripts."
     },
     {
-      "name": "governance_recovery_verifier",
+      "name": "complex_integrity_verifier",
       "type": "local_tool",
       "status": "recommended",
-      "use_when": "Protocol, release package, recovery chain, or machine-board references are edited.",
-      "boundary": "This verifies structural recovery health; it does not prove a human-facing deliverable is good.",
-      "verification_hint": "Run tools/test_verify_governance_recovery.py and the relevant verify_governance_recovery.py preset."
+      "use_when": "Protocol, current-state, quickstart, behavior pack, Runtime Kit templates, or examples are edited.",
+      "boundary": "This verifies active repository structure; it does not prove a human-facing deliverable is good.",
+      "verification_hint": "Run tools/test_verify_complex_integrity.py and tools/verify_complex_integrity.py."
     },
     {
       "name": "runtime_templates",

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowsSplit,
-  Books,
   BracketsCurly,
   ChartLineUp,
   CheckCircle,
@@ -10,7 +9,6 @@ import {
   Database,
   FileMagnifyingGlass,
   FlowArrow,
-  GraduationCap,
   Graph,
   HouseLine,
   MapTrifold,
@@ -53,36 +51,36 @@ const coreOutcomes = [
   },
   {
     title: "可审查恢复链",
-    text: "行为回归、transcript 审查、黄金样例和机器看版把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
+    text: "当前状态、行为回归、transcript 审查、黄金样例和完整性验证把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
     icon: UsersThree,
   },
 ];
 
 const assets = [
   {
-    name: "v3 主协议",
+    name: "核心协议",
     role: "定义行为内核、双剖面项目性质、自适应判断、Loop 小闭环、评分迭代、风险边界和恢复规则。",
-    file: "protocol/Complex项目持续治理协议_v3_核心版.md",
+    file: "protocol/core.md",
   },
   {
-    name: "低摩擦入口",
-    role: "把厚协议压缩成用户可以自然说出的持续治理入口。",
-    file: "protocol/Complex项目持续治理_低摩擦用户入口_20260622.md",
+    name: "当前状态",
+    role: "记录当前恢复锚点、next_route、停止条件和活跃样例，不再维护长状态日志。",
+    file: "protocol/current-state.md",
   },
   {
-    name: "路由表与经验库",
-    role: "用大类路由和失败模式校准新项目，不再复制具体领域长模板。",
-    file: "protocol/真实项目压力测试_跨域收束与低摩擦路由表_20260622.md",
+    name: "快速入口",
+    role: "让新代理按 README、current-state、7 步行为内核和黄金样例启动。",
+    file: "docs/quickstart.md",
   },
   {
-    name: "发布包与验证器",
-    role: "把当前能力、恢复入口、变更清单和本地 verifier 绑定起来。",
-    file: "protocol/持续治理协议发布包_20260622.md",
+    name: "完整性验证器",
+    role: "检查当前核心文件、模板、样例、行为包和站点入口是否一致，不依赖旧长日志。",
+    file: "tools/verify_complex_integrity.py",
   },
   {
     name: "行为回归包",
     role: "用 11 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
-    file: "docs/behavior_regression_cases_20260702.json",
+    file: "docs/behavior-regression-cases.json",
   },
   {
     name: "Transcript 审查",
@@ -90,14 +88,14 @@ const assets = [
     file: "tools/review_behavior_transcript.py",
   },
   {
-    name: "结果记录模板",
-    role: "记录真实回复审查和端到端项目压力测试结果，衡量用户纠偏、证据边界和交付质量。",
-    file: "docs/behavior_review_result_template_20260702.md",
+    name: "行为审查说明",
+    role: "记录真实回复审查和端到端项目样本，衡量用户纠偏、证据边界和交付质量。",
+    file: "docs/behavior-review.md",
   },
   {
     name: "5 分钟上手版",
-    role: "让新代理先抓第 224 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
-    file: "docs/complex_new_agent_5_minute_quickstart_20260702.md",
+    role: "让新代理先抓当前状态、7 步行为内核、项目性质和最小 Runtime Kit。",
+    file: "docs/quickstart.md",
   },
   {
     name: "黄金样例",
@@ -129,31 +127,31 @@ const capabilityGroups = [
     icon: Compass,
   },
   {
-    title: "能力发现与编排",
-    summary: "显性复盘 skill、工具、插件、connector、API、外部方法和子代理，但不机械打断。",
+    title: "抗人工漂移",
+    summary: "问人前先证明必要性，能推进就继续。",
     detail:
-      "能力和拓扑复查以事件触发为主；无事件时 lightweight keep，外部写入、账号、付款和发布必须进入授权护栏。",
+      "human_intervention_drift_guard、known_next_step_auto_execute_rule 和 context_pointer_first_intake 防止 AI 把低风险工作、材料整理和明确下一步甩回给用户。",
     icon: PuzzlePiece,
   },
   {
-    title: "真实小题验证",
-    summary: "在大投入前先跑 5-30 分钟小题，暴露证据、执行或边界缺口。",
+    title: "Prompt 连续性",
+    summary: "每轮先把总规划、当前状态和本轮目标重水化。",
     detail:
-      "micro_task_execution_check 要求有实际输入、执行证据、观察结果、pass/fail、remaining_gap 和 downgrade_rule，防止只写 expected behavior。",
+      "complex_prompt_bootstrap_gate 先设计项目专用 prompt；round_prompt_rehydration_gate 确保后续 Plan 继承总规划，而不是只盯住眼前局部任务。",
     icon: CheckCircle,
   },
   {
-    title: "高风险与外部状态边界",
-    summary: "涉及外部系统、隐私、部署、交易、数据和安全时先降级、先授权。",
+    title: "能力与拓扑",
+    summary: "显性判断工具、skill、API、账号、子代理和长期线程，但不机械打断。",
     detail:
-      "external_state_write_guard、integration_lifecycle_gate、security_incident_response_guard、data_artifact_lineage_freshness_guard 和 software_delivery_state_boundary_guard 负责阻止越级表述。",
+      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。外部写入、账号、付款和发布仍进入授权护栏。",
     icon: WarningDiamond,
   },
   {
-    title: "交付物新鲜度",
-    summary: "源文件改了，就检查 Word、PDF、网页、图片、发布包是否过期。",
+    title: "独立评审",
+    summary: "把同 session 诊断和真正 independent review 分开。",
     detail:
-      "rendered_artifact_freshness、release_package_freshness 和 change_inventory 把源稿、渲染物、发布说明和恢复入口绑定，避免最终交付物 stale。",
+      "independent_review_context_separation 要求真正审查使用清上下文、独立 reviewer/thread 或事实账本；同 session 角色扮演只能标成 diagnostic。",
     icon: Package,
   },
   {
@@ -169,7 +167,7 @@ const mechanismSteps = [
   {
     k: "01",
     title: "恢复真实状态",
-    text: "先区分 current_basis、not_current_basis、用户最新请求、旧草稿和历史记录。",
+    text: "先区分 current_basis、not_current_basis、用户最新请求、旧草稿和当前依据。",
     output: "current_basis",
   },
   {
@@ -214,90 +212,81 @@ const gateTypes = [
   {
     name: "always minimum",
     zh: "常驻最小",
-    examples: "current_basis、evidence_matrix、decision_log、traceability_matrix",
+    examples: "current_basis、project_nature、decision_rights、round_goal、next_route",
   },
   {
-    name: "risk based",
-    zh: "风险触发",
-    examples: "安全、隐私、交易、部署、数据谱系、软件交付状态",
+    name: "nature based",
+    zh: "性质触发",
+    examples: "evidence_fill、model_discovery、mixed、execution_delivery",
   },
   {
-    name: "continuous only",
-    zh: "连续优化专用",
-    examples: "meta project profile、iteration quality bar、trigger continuation",
+    name: "boundary based",
+    zh: "边界触发",
+    examples: "账号、API、付款、发布、外部写入、不可逆动作、高风险主张",
   },
   {
-    name: "recovery only",
-    zh: "恢复链专用",
-    examples: "latest board tail check、append EOF、recovery verifier",
+    name: "review based",
+    zh: "评审触发",
+    examples: "fact-ledger、清上下文评审、read-only audit、transcript review",
   },
 ];
 
 const scenarios = [
   {
-    id: "research",
-    label: "研究 / 数据 / 模型",
+    id: "evidence",
+    label: "证据填充型",
     icon: Database,
-    claim: "模型、数据集或研究结论是否能支撑当前项目判断。",
-    lenses: ["claim_ladder", "evidence_contract", "execution_validation", "data_artifact_lineage_freshness_guard"],
-    outputs: ["数据产物谱系", "字段证据状态", "复现与刷新边界", "不能外推结论"],
-    downgrade: "没有来源快照、质量验证或复现配方时，只能写 source-backed 或待复现，不能写可决策。",
+    claim: "模型、指标或判断框架已经确定，现在要用证据把结论填实。",
+    lenses: ["project_nature_router", "evidence_matrix", "claim_readiness_ladder", "delivery_contract"],
+    outputs: ["证据分层", "缺口与可声明边界", "检索/获取升级路径", "人看版交付"],
+    downgrade: "证据不足时只写到对应层级，不能把材料存在、引用存在或局部验证写成结论成立。",
   },
   {
-    id: "software",
-    label: "软件 / 开源 / 产品",
+    id: "discovery",
+    label: "模型发现型",
+    icon: Graph,
+    claim: "问题定义、研究框架、解释路径或故事线还没定，不能过早证据填表。",
+    lenses: ["anti_premature_convergence_gate", "ibis_argument_map_gate", "thought_search_gate", "judgment_mode: exploratory"],
+    outputs: ["候选框架", "issue / position / pro / con", "可区分探针", "收敛条件"],
+    downgrade: "没有比较候选框架和反例之前，不能把一个局部证据缺口升级成主目标。",
+  },
+  {
+    id: "execution",
+    label: "执行交付型",
     icon: BracketsCurly,
-    claim: "代码、PR、CI、release 或 package 到底证明了哪一级交付状态。",
-    lenses: ["execution_validation", "operation_handoff", "software_delivery_state_boundary_guard", "integration_lifecycle_gate"],
-    outputs: ["issue/PR/CI/release 状态表", "部署与真实使用缺口", "rollback/monitoring 边界", "交付推进清单"],
-    downgrade: "PR 合并或 CI 通过不能外推为生产可用；缺 release、deployment、usage 证据时必须停在对应状态。",
+    claim: "主要任务是实现、包装、交付、验证或说明当前成果。",
+    lenses: ["round_goal", "Loop", "deliverable_contract_gate", "next_route"],
+    outputs: ["窄目标", "最小验证", "交付边界", "下一轮恢复线索"],
+    downgrade: "验证未覆盖的部分不能当作已完成；人看版和机器恢复记录要分开。",
   },
   {
-    id: "education",
-    label: "教育 / 公共服务",
-    icon: GraduationCap,
-    claim: "课程、支教、公益或公共服务是否真的改善了对象状态，而不是只完成活动。",
-    lenses: ["stakeholder_context", "risk_ethics_permission", "execution_validation", "claim_lane_binding"],
-    outputs: ["服务对象与授权边界", "活动产出到结果证据链", "低摩擦反馈闸门", "公共成效降级规则"],
-    downgrade: "活动场次、照片或宣传材料只能证明执行发生，不能直接证明学习成效、服务改善或长期影响。",
-  },
-  {
-    id: "governance",
-    label: "组织 / 商业 / 治理",
+    id: "review",
+    label: "独立评审型",
     icon: UsersThree,
-    claim: "资源配置、政策方案、商业模式或组织流程是否具备可执行与可追踪依据。",
-    lenses: ["decision_log", "stakeholder_context", "operation_handoff", "source_authority_precedence_trace"],
-    outputs: ["关键取舍记录", "权威来源优先级", "执行责任与申诉边界", "验收与复盘路径"],
-    downgrade: "方案获批、名单发布或合同存在不能自动证明公平、履约完成、商业可行或治理有效。",
+    claim: "需要客观检查某个输出或流程是否真的符合标准。",
+    lenses: ["independent_review_context_separation", "read_only_audit_subagent_contract", "fact-ledger", "decision_log"],
+    outputs: ["事实账本", "清上下文评审说明", "问题/证据/结论分离", "整改建议"],
+    downgrade: "同 session 角色扮演只能算诊断，不应包装成真正独立评审。",
   },
   {
-    id: "culture",
-    label: "传播 / 文化 / 设计",
-    icon: Books,
-    claim: "传播作品、文化活动、设计方案是否能支撑理解、参与、转化或长期影响。",
-    lenses: ["deliverable_storyline", "stakeholder_context", "execution_validation", "transfer_boundary"],
-    outputs: ["受众与场景假设", "传播证据分层", "作品到行动的链条", "影响边界说明"],
-    downgrade: "曝光、获奖或内容发布不能直接证明认知改变、行为转化或文化传承效果。",
-  },
-  {
-    id: "risk",
-    label: "高风险横切",
+    id: "boundary",
+    label: "高风险边界",
     icon: ShieldCheck,
-    claim: "健康、安全、法律、隐私、财务、未成年人等风险是否已被授权、降级或转人工。",
-    lenses: ["risk_ethics_permission", "external_state_write_guard", "security_incident_response_guard", "deployment_readiness_gate"],
-    outputs: ["授权与敏感数据边界", "外部写入守卫", "部署/披露/监控证据", "manual_action_required"],
-    downgrade: "缺授权、回滚、监控、隐私或监管证据时，只能做只读分析或小闭环，不能代为执行高影响动作。",
+    claim: "目标、授权、外部写入、公开口径、高风险主张或现实责任发生变化。",
+    lenses: ["decision_rights_matrix", "external_state_write_guard", "manual_action_required", "ask_user_necessity_gate"],
+    outputs: ["必须回问事项", "AI 可自主事项", "人工操作边界", "回滚/降级路线"],
+    downgrade: "没有授权时只能做只读分析、计划或低风险小验证，不能替用户执行外部影响动作。",
   },
 ];
 
 const comparisonRows = [
-  ["推进方式", "先讨论方案或直接执行", "先建立主张、证据、资源边界和阶段路由"],
-  ["项目范围", "容易被当前材料或熟悉领域收窄", "用新领域构造器覆盖真实项目与跨域场景"],
-  ["工具使用", "临时想起、临时调用、难复盘", "任务开始与阶段切换时显性复盘能力候选和拒绝理由"],
-  ["风险管理", "执行后才发现证据、授权或交付边界不够", "执行前给出 downgrade_rule 和 claim readiness"],
-  ["复杂度控制", "要么过度表格化，要么完全黑箱", "机器字段内部承担，用户可见层压缩到高杠杆信息"],
-  ["停止条件", "持续优化容易空转", "有 trigger-based continuation 和 iteration quality bar"],
-  ["恢复能力", "依赖聊天记忆", "用机器看版、变更清单、发布包和 verifier 恢复"],
+  ["推进方式", "先讨论方案或直接执行", "先跑 7 步行为内核，再按项目性质推进"],
+  ["项目性质", "容易把所有任务都变成证据审计", "先判断 evidence_fill / model_discovery / mixed / execution_delivery"],
+  ["人工介入", "安全起见频繁问是否继续", "问人前证明必要性；清楚低风险下一步自动推进"],
+  ["材料处理", "要求用户整理、搬运、摘要", "用户给路径或文件时优先自行读取和归纳"],
+  ["评审独立性", "同 session 扮演评审", "区分 diagnostic 自评和清上下文 independent review"],
+  ["复杂度控制", "要么过度表格化，要么完全黑箱", "行为内核给主线，模板和案例按需启用"],
+  ["恢复能力", "依赖聊天记忆", "用 current-state、next_route、样例和 verifier 恢复"],
 ];
 
 function useHashRoute() {
@@ -521,7 +510,7 @@ function Mechanism() {
         <article className="mechanism-panel">
           <h2>动态激活，而不是全量硬跑</h2>
           <p>
-            `complex_behavior_kernel` 是第一层，`gate_activation_matrix` 是第二层。先确定本轮行为，再把规则分成常驻最小、风险触发、连续优化专用和恢复链专用，避免普通推进变成流程负担。
+            `complex_behavior_kernel` 是第一层。先确定本轮行为，再把规则分成常驻最小、风险触发、连续推进和当前状态验证，避免普通推进变成流程负担。
           </p>
           <div className="gate-grid">
             {gateTypes.map((gate) => (
@@ -626,7 +615,7 @@ function Advantages() {
     <div className="content-page">
       <PageTitle
         label="对比优势"
-        title="它比普通项目推进更稳，也比厚重流程更轻。"
+        title="它比一般项目推进更稳，也比厚重流程更轻。"
         copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、结果记录、黄金样例和恢复链防止下一轮重新迷路。"
       />
 
@@ -649,7 +638,7 @@ function Advantages() {
         {[
           {
             title: "比提示词更强",
-            text: "它有文件、路由、验证器、经验库和恢复入口。下一次继续时不是靠记忆，而是按机器看版恢复。",
+            text: "它有当前状态、next_route、验证器和黄金样例。下一次继续时不是靠记忆，而是按 current-state 恢复。",
             icon: Path,
           },
           {
@@ -707,7 +696,7 @@ export function App() {
       <footer className="site-footer">
         <div>
           <strong>Complex 项目持续治理协议</strong>
-          <p>当前页面用于解释协议价值与实现方法，不替代协议正文、发布包或恢复链验证。</p>
+          <p>当前页面用于解释协议价值与实现方法，不替代核心协议、当前状态和完整性验证。</p>
         </div>
         <button className="secondary-action compact" type="button" onClick={() => go("overview")}>
           回到概览

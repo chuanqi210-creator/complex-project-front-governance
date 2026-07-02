@@ -1,0 +1,183 @@
+# Complex Continuous Governance Core
+
+Complex is a runtime protocol for complex projects. It is not a history log, a template dump, or a mode menu.
+
+Core model:
+
+> strong-autonomy continuous execution + evidence boundaries + anti-human/context-drift safeguards + auditable recovery.
+
+## 1. Behavior Kernel
+
+`complex_behavior_kernel` is the first execution spine. Every Complex round must do seven things:
+
+1. Restore true state: identify `current_basis`, `not_current_basis`, latest user request, current materials, and prior decisions.
+2. Classify project nature: run `project_nature_router` and choose `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+3. Assign decision rights: run `adaptive_judgment_controller`, `decision_rights_matrix`, and `ask_user_necessity_gate`.
+4. Pick one highest-leverage question.
+5. Run the lightest useful validation or execution.
+6. Deliver to the right audience.
+7. Leave `next_route` and recovery notes.
+
+If a mechanism name conflicts with these behaviors, the behavior kernel wins.
+
+## 2. Project Nature
+
+`project_nature_router` decides the operating profile:
+
+- `evidence_fill`: the model, formula, metric, or framework is fixed. Use `evidence_matrix`, `claim_readiness_ladder`, and `delivery_contract`; record `divergence_noop_reason` when no model discovery is needed.
+- `model_discovery`: the frame is unsettled. Use `anti_premature_convergence_gate`, `ibis_argument_map_gate`, `thought_search_gate`, and `judgment_mode: exploratory`.
+- `mixed`: protect discovery until convergence conditions are met, then switch to evidence fill.
+- `execution_delivery`: focus on implementation, packaging, delivery, and recovery.
+
+Model discovery must keep candidate frameworks, issue / position / pro / con maps, counterexamples, convergence conditions, and discriminating probes visible. It must not let a local evidence gap become the main goal too early.
+
+Evidence fill must not pay unnecessary divergence overhead. If the model is fixed, fill evidence, validate claims, and deliver.
+
+## 3. Decision Rights
+
+Complex defaults to strong autonomy with guardrails.
+
+AI may decide:
+
+- plan details
+- Loop probes
+- evidence depth
+- tool/capability fit
+- temporary subagent splits
+- minor long-thread responsibility adjustments
+- divergence/convergence pacing
+- `lightweight_keep` when no refresh event exists
+
+AI must ask before:
+
+- changing the main goal
+- using accounts, APIs, payment, publishing, or external writes
+- irreversible file or system actions
+- changing delivery/public voice
+- taking high-risk real-world action
+- making strong public claims without enough evidence
+
+`manual_action_required` is for true access, permission, privacy, account, external-write, payment, publication, or real-world responsibility boundaries.
+
+## 4. Anti-Human And Context Drift
+
+`human_intervention_drift_guard` has two duties:
+
+- prevent unsafe AI overreach
+- prevent AI from offloading low-risk work back to the user
+
+`known_next_step_auto_execute_rule`: if `next_route`, `round_goal`, state, or accessible materials already define a clear, low-risk, reversible next step, execute or validate it instead of asking "should I continue?"
+
+`context_pointer_first_intake`: if the user provides directories, files, links, exports, or material locations, read and summarize accessible materials before asking for manual cleanup, copy-paste, or summaries. Record `resource_boundary` only when access or authorization blocks intake.
+
+`user_input_classification_gate`: classify new user input as fact, preference, authorization, local correction, goal change, or noise/possible misleading. Only goal changes and authorization boundaries rewrite the mainline.
+
+## 5. Prompt And Continuous Cadence
+
+`complex_prompt_bootstrap_gate` applies when the user asks to scan Complex and design a project prompt before execution.
+
+Output:
+
+- `protocol_scan_sequence`
+- startup questions or safe defaults
+- project prompt rationale
+- `copy_ready_prompt`
+- `execution_bridge`
+
+Do not execute business work before confirmation unless the user explicitly authorizes it.
+
+`round_prompt_rehydration_gate` applies before each new Plan/Loop in a prompt-based or continuous project. Recover the master prompt or `active_goal_summary`, current state, and `round_goal` into `round_execution_prompt`.
+
+Each round plan must say what comes from:
+
+- master prompt
+- prior state
+- new judgment
+- AI autonomous decision
+
+`per_round_goal_lifecycle_gate`: do not use one long tool Goal for many rounds. Use a narrow per-round goal. If an old tool Goal is stale or blocked while the project can continue, record `stale_or_blocked_tool_goal`, `goal_refresh_gate`, and `protocol_round_goal`; do not declare the whole project blocked.
+
+`continuous_cadence_refresh_gate`: refresh tools, topology, goals, and prompt by event trigger first. Three rounds is only a fallback cap.
+
+## 6. Capability And Topology
+
+`capability_discovery_cadence_gate` runs lightly at entry and when events justify it. Consider tools, skills, plugins, connectors, APIs, browsers, accounts, databases, and external methods.
+
+Record capability choices as:
+
+- selected
+- rejected
+- backlog
+- `manual_action_required`
+
+Use `capability_type_and_side_effect_gate` and `external_state_write_guard` for anything that can change external state.
+
+Use `agent_topology_selection_trace` when work may need main-thread execution, temporary subagents, long-running threads, or review lanes. Use `read_only_audit_subagent_contract` for evidence or conformance review.
+
+`independent_review_context_separation`: same-session roleplay is diagnostic only. True independent review requires clean context, a separate reviewer/thread, read-only audit subagent, different reviewer/model where available, or a fact-ledger-only packet. Track `human_input_drift_risk` when prior conversation may bias judgment.
+
+## 7. Delivery Contract
+
+Run `deliverable_contract_gate` before output:
+
+- audience
+- purpose
+- granularity
+- tone
+- internal-information boundary
+
+Run `reader_translation_gate` for human-facing work. If the user says `只要人看版`, keep machine fields, YAML, verifier internals, and protocol jargon out of the main deliverable.
+
+Keep human-readable delivery and machine recovery notes separate.
+
+## 8. Setup Card And User-Visible Triggers
+
+`complex_setup_question_card` applies when the user only says "use Complex" or "按 Complex 推进".
+
+Ask or default only route-changing choices:
+
+- delivery audience
+- project nature
+- capability permission
+- collaboration topology
+- cadence
+- autonomy boundary
+- manual-action boundary
+
+`user_visible_trigger_guide` means steering words are visible to users, not hidden commands:
+
+- `先设计提示词/prompt`
+- `模型发现型 / 不要早收敛`
+- `证据填充型`
+- `连续节拍`
+- `多线程/子代理`
+- `外部工具/账号/API`
+- `少问我 / 能推进就继续 / 我给目录你自己读`
+- `独立评审 / 避免上下文污染`
+- `只要人看版`
+
+## 9. Runtime Kit And Evaluation
+
+Runtime templates are optional landing pads, not required protocol fields.
+
+Use filled examples before blank templates:
+
+- evidence fill
+- model discovery
+- independent review
+
+Behavior regression is the first line of protocol maintenance:
+
+- `docs/behavior-regression-cases.json`
+- `docs/behavior-transcript-review-rules.json`
+- `tools/check_behavior_regression_pack.py`
+- `tools/review_behavior_transcript.py`
+
+Promotion rule:
+
+1. Add or refine a behavior case.
+2. Add or refine transcript review rules.
+3. Add or refine a golden example.
+4. Promote to this core protocol only when repeated/high-impact failures cannot be handled by the first three.
+
+Do not add history archives, long machine-board logs, dated release packages, or one-off recovery records to the active protocol.

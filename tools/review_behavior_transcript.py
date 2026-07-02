@@ -15,8 +15,8 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT / "docs" / "behavior_regression_cases_20260702.json"
-RULES = ROOT / "docs" / "behavior_transcript_review_rules_20260702.json"
+PACK = ROOT / "docs" / "behavior-regression-cases.json"
+RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
 
 
 def fail(message: str) -> None:

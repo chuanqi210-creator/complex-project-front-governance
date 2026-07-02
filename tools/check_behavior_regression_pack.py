@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Check the Complex behavior regression pack.
-
-This is intentionally lightweight: it does not pretend to evaluate an LLM.
-It validates that the project keeps a compact behavior-case bank, transcript
-review rules, and trigger names that still exist in active docs/templates.
-"""
+"""Check the Complex behavior regression pack."""
 
 from __future__ import annotations
 
@@ -14,17 +9,18 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT / "docs" / "behavior_regression_cases_20260702.json"
-TRANSCRIPT_RULES = ROOT / "docs" / "behavior_transcript_review_rules_20260702.json"
+PACK = ROOT / "docs" / "behavior-regression-cases.json"
+TRANSCRIPT_RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
 
 DOC_PATHS = [
     ROOT / "README.md",
     ROOT / "AGENTS.md",
     ROOT / "protocol" / "AGENTS.md",
-    ROOT / "protocol" / "Complex项目持续治理协议_v3_核心版.md",
-    ROOT / "protocol" / "持续治理协议发布包_20260622.md",
+    ROOT / "protocol" / "core.md",
+    ROOT / "protocol" / "current-state.md",
+    ROOT / "docs" / "quickstart.md",
     ROOT / "docs" / "runtime-skill-management.md",
-    ROOT / "docs" / "complex_runtime_cadence_simulation_20260701.md",
+    ROOT / "docs" / "behavior-review.md",
 ]
 DOC_PATHS.extend(sorted((ROOT / "templates").glob("*.md")))
 
@@ -52,37 +48,37 @@ def fail(message: str) -> None:
     raise SystemExit(1)
 
 
-def load_pack() -> dict:
-    if not PACK.exists():
-        fail(f"missing behavior pack: {PACK}")
+def load_json(path: Path) -> dict:
+    if not path.exists():
+        fail(f"missing JSON file: {path}")
     try:
-        return json.loads(PACK.read_text(encoding="utf-8"))
+        data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        fail(f"invalid JSON in {PACK}: {exc}")
-
-
-def load_transcript_rules() -> dict:
-    if not TRANSCRIPT_RULES.exists():
-        fail(f"missing transcript review rules: {TRANSCRIPT_RULES}")
-    try:
-        return json.loads(TRANSCRIPT_RULES.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        fail(f"invalid JSON in {TRANSCRIPT_RULES}: {exc}")
+        fail(f"invalid JSON in {path}: {exc}")
+    if not isinstance(data, dict):
+        fail(f"expected JSON object: {path}")
+    return data
 
 
 def load_docs() -> str:
-    parts: list[str] = []
     missing = [path for path in DOC_PATHS if not path.exists()]
     if missing:
         fail("missing checked docs: " + ", ".join(str(path) for path in missing))
-    for path in DOC_PATHS:
-        parts.append(path.read_text(encoding="utf-8"))
-    return "\n".join(parts)
+    return "\n".join(path.read_text(encoding="utf-8") for path in DOC_PATHS)
+
+
+def template_or_example_exists(record: str) -> bool:
+    if not record.endswith(".md"):
+        return True
+    template_path = ROOT / "templates" / record
+    if template_path.exists():
+        return True
+    return any((example / record).exists() for example in (ROOT / "docs" / "examples").glob("*"))
 
 
 def main() -> None:
-    pack = load_pack()
-    transcript_rules = load_transcript_rules()
+    pack = load_json(PACK)
+    transcript_rules = load_json(TRANSCRIPT_RULES)
     docs = load_docs()
 
     cases = pack.get("cases")
@@ -125,8 +121,8 @@ def main() -> None:
                 fail(f"{case_id} trigger not found in active docs/templates: {trigger_key}")
 
         for record in case["expected_runtime_records"]:
-            if record.endswith(".md") and not (ROOT / "templates" / record).exists():
-                fail(f"{case_id} references missing template: templates/{record}")
+            if not template_or_example_exists(str(record)):
+                fail(f"{case_id} references missing runtime record: {record}")
 
     missing_required = required_ids - seen_ids
     if missing_required:
@@ -136,10 +132,7 @@ def main() -> None:
     missing_rules = seen_ids - rule_ids
     extra_rules = rule_ids - seen_ids
     if missing_rules or extra_rules:
-        fail(
-            "transcript rule mismatch: "
-            + f"missing={sorted(missing_rules)}, extra={sorted(extra_rules)}"
-        )
+        fail(f"transcript rule mismatch: missing={sorted(missing_rules)}, extra={sorted(extra_rules)}")
 
     for case_id, rule in transcript_case_rules.items():
         for key in ["required_marker_groups", "forbidden_marker_groups", "human_review_questions"]:
