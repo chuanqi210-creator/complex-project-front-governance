@@ -56,6 +56,9 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - residual_auto_beat_available: yes / no
 - residual_auto_beat_type: boundary_contradiction_repair / submission_friction_reduction / non_expansion_verification / exact_operator_handoff / preflight_after_env_var / none
 - orchestration_contract_status: not_needed / pending / complete / degraded
+- complex_source_resolution_status: explicit_user_path / local_authoritative_path / sibling_repo / target_adapter_only / unavailable_need_user_path
+- complex_source:
+- target_project_source:
 - capability_preflight:
 - resource_taxonomy_decision:
 - authorization_status:

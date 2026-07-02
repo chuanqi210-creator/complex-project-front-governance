@@ -167,9 +167,9 @@ def main() -> None:
     case_ids = {case.get("case_id") for case in cases if isinstance(case, dict)} if isinstance(cases, list) else set()
     required_ids = set(pack.get("required_case_ids", []))
     rule_ids = set(rules.get("case_rules", {}))
-    check(checks, "behavior_case_count_14", len(case_ids) == 14, sorted(case_ids))
-    check(checks, "required_case_count_14", len(required_ids) == 14, sorted(required_ids))
-    check(checks, "transcript_rule_count_14", len(rule_ids) == 14, sorted(rule_ids))
+    check(checks, "behavior_case_count_15", len(case_ids) == 15, sorted(case_ids))
+    check(checks, "required_case_count_15", len(required_ids) == 15, sorted(required_ids))
+    check(checks, "transcript_rule_count_15", len(rule_ids) == 15, sorted(rule_ids))
     check(checks, "behavior_cases_match_rules", case_ids == rule_ids == required_ids)
 
     active_text = "\n".join(path.read_text(encoding="utf-8", errors="ignore") for path in active_text_files())

@@ -15,7 +15,8 @@
     "context_pointer_first_intake",
     "independent_review_context_separation",
     "downstream_local_boundary_reconciliation",
-    "orchestration_preflight_contract"
+    "orchestration_preflight_contract",
+    "complex_source_resolution_outside_target_repo"
   ],
   "cases": [
     {
@@ -389,6 +390,35 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ]
+    },
+    {
+      "case_id": "complex_source_resolution_outside_target_repo",
+      "user_prompt": "请在一个新项目里扫描 Complex 并设计 prompt。当前目标项目里没有 Complex 目录，只有 .git。",
+      "project_nature": "unknown_at_entry",
+      "expected_triggers": [
+        "complex_source_resolution",
+        "protocol_scan_sequence",
+        "complex_prompt_bootstrap_gate",
+        "downstream_activation_reconciliation"
+      ],
+      "expected_behavior": [
+        "Do not assume Complex must live inside the target project.",
+        "Resolve the authoritative Complex source using an explicit user path, the local authoritative workspace, or sibling Complex repository names.",
+        "Separate complex_source from target_project_source before scanning.",
+        "If the target repo lacks a Complex directory, state that only the target repo lacks a local copy.",
+        "Use downstream adapters or manifests only as absorbed target-project evidence when the authoritative Complex source is unavailable."
+      ],
+      "forbidden_behavior": [
+        "Say Complex cannot be scanned only because the target repository has no Complex directory.",
+        "Treat unrelated candidate folders as target project material.",
+        "Use downstream adapters as the authoritative Complex source while an authoritative Complex workspace is accessible.",
+        "Invent Complex protocol content when no source is accessible.",
+        "Confuse the Complex repo with the downstream project repo."
+      ],
+      "expected_runtime_records": [
+        "prompt.md",
+        "state.md"
       ]
     }
   ]

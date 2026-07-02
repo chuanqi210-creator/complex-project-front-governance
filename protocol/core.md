@@ -78,6 +78,21 @@ Do not end a continuous-cadence response with "next time you say continue" or eq
 
 `complex_prompt_bootstrap_gate` applies when the user asks to scan Complex and design a project prompt before execution.
 
+`complex_source_resolution` runs before protocol scanning. Do not assume Complex lives inside the downstream target repository. Resolve sources in this order:
+
+1. explicit user-provided Complex path or repository
+2. current authoritative local workspace when available: `/Users/chuchenqidawang/Documents/complex-project-front-governance`
+3. sibling/local repository names such as `complex-project-front-governance` or `complex-project-continuous-governance`
+4. target-repository absorbed adapters/manifests only as downstream evidence, not as the authoritative Complex source
+5. ask the user for the Complex path if none of the above is accessible
+
+Keep two contexts separate:
+
+- `complex_source`: the authoritative Complex Runtime Kit, normally `README.md`, `protocol/current-state.md`, `docs/quickstart.md`, `protocol/core.md`, templates, behavior cases, and examples.
+- `target_project_source`: the repository being governed, such as its `AGENTS.md`, `CONTEXT.md`, status files, manifests, stage boards, code, and outputs.
+
+If the target repository has no `Complex` directory, say that the target repo does not contain a local copy; then resolve the external Complex source. Do not treat unrelated candidate folders as target project material, and do not replace Complex scanning with downstream adapters unless the authoritative source is truly unavailable.
+
 Output:
 
 - `protocol_scan_sequence`

@@ -6,6 +6,12 @@ Complex is a compact runtime kit for pushing complex projects forward with:
 
 This repository is the current authoritative version. Older material is intentionally not kept in the working tree; Git history is the recovery path.
 
+In this local Codex environment, the authoritative Complex workspace is:
+
+`/Users/chuchenqidawang/Documents/complex-project-front-governance`
+
+When a different project says "scan Complex", do not search only inside that target project. First resolve this authoritative Complex source, then read the target project separately. If the target repo has only `.git` or no `Complex` directory, that means there is no local copy inside the target repo; it does not mean Complex is unavailable.
+
 ## Current Entrypoints
 
 - Core protocol: `protocol/core.md`
@@ -42,6 +48,8 @@ Plan mode should produce an orchestration contract before execution when the use
 
 ```text
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
+
+Complex 权威来源优先使用：/Users/chuchenqidawang/Documents/complex-project-front-governance。请把 Complex 协议源和目标项目材料分开读取：Complex 源读 README.md、protocol/current-state.md、docs/quickstart.md、protocol/core.md、templates、behavior cases 和 examples；目标项目再读它自己的 AGENTS.md、CONTEXT.md、状态文件、manifest、stage board 和代码。不要因为目标项目里没有 Complex 目录就说找不到 Complex；如果权威路径不可访问，再向我索要路径。
 
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再进入执行。
 请在设计 prompt 前主动判断并显式使用这些 steering words，避免跑偏：
@@ -121,7 +129,7 @@ pnpm -C docs/protocol_explainer_site build
 
 Expected baseline:
 
-- behavior pack: 14 cases and 14 transcript rules
+- behavior pack: 15 cases and 15 transcript rules
 - integrity verifier: `failure_count: 0`
 - site build: Vite build succeeds
 

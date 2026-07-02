@@ -27,6 +27,9 @@ This prompt is an execution contract for one project. It does not replace the Co
 
 ## Protocol Scan Summary
 
+- Complex source resolution:
+- complex_source files read:
+- target_project_source files read:
 - Complex files or sections read:
 - Components adopted now:
 - Components skipped now:
@@ -78,6 +81,17 @@ This prompt is an execution contract for one project. It does not replace the Co
 
 ```text
 请按 Complex 项目持续治理协议推进以下项目。
+
+Complex 权威来源：
+- 默认本地路径：/Users/chuchenqidawang/Documents/complex-project-front-governance
+- 如果用户另给 Complex 路径，以用户路径为准。
+- 如果目标项目没有 Complex 目录，不要说 Complex 不存在；先尝试上述权威路径或同级 `complex-project-front-governance` / `complex-project-continuous-governance`。
+- 如果仍不可访问，只说“Complex 权威源不可访问，需要用户提供路径”，不要编造协议内容。
+
+上下文分离：
+- complex_source：README.md、protocol/current-state.md、docs/quickstart.md、protocol/core.md、templates、behavior cases、examples。
+- target_project_source：目标仓库的 AGENTS.md、CONTEXT.md、状态文件、manifest、stage board、代码和 outputs。
+- 下游 adapter / manifest 只能作为目标项目已吸收 Complex 的证据，不能替代 Complex 权威源，除非权威源不可访问。
 
 项目目标：
 
@@ -181,7 +195,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、授权状态、总控/worker 分工、Beat Router 和 stop condition。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。
+请先解析 Complex 来源：优先使用用户提供路径，其次使用 /Users/chuchenqidawang/Documents/complex-project-front-governance，再查同级 Complex 仓库；不要只在目标项目里找 Complex。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、授权状态、总控/worker 分工、Beat Router 和 stop condition。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。
 ```
 
 ## Execution Bridge

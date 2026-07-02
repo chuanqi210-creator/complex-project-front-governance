@@ -510,6 +510,54 @@
         "Did it distinguish subagents from user-visible long-running threads?",
         "Did it route each beat through a nonterminal or terminal route with clear stop conditions?"
       ]
+    },
+    "complex_source_resolution_outside_target_repo": {
+      "minimum_required_groups": 5,
+      "required_marker_groups": [
+        {
+          "label": "source resolution",
+          "any": ["complex_source_resolution", "Complex 来源解析", "权威来源", "authoritative Complex source"]
+        },
+        {
+          "label": "authoritative local path",
+          "any": ["/Users/chuchenqidawang/Documents/complex-project-front-governance", "complex-project-front-governance", "complex-project-continuous-governance"]
+        },
+        {
+          "label": "separate contexts",
+          "any": ["complex_source", "target_project_source", "协议源和目标项目", "分开读取"]
+        },
+        {
+          "label": "target repo local copy missing",
+          "any": ["目标项目没有 Complex 目录", "没有本地副本", "target repo lacks", "只有 .git"]
+        },
+        {
+          "label": "fallback boundary",
+          "any": ["如果权威路径不可访问", "需要用户提供路径", "不要编造", "ask the user for the path"]
+        }
+      ],
+      "forbidden_marker_groups": [
+        {
+          "label": "only searches target repo",
+          "any": ["只能在当前项目里找 Complex", "当前仓库没有 Complex，所以不能扫描", "只有 .git，所以找不到 Complex"]
+        },
+        {
+          "label": "confuses repos",
+          "any": ["把 Complex 仓库当成目标项目材料", "把目标项目当成 Complex 协议源", "unrelated candidate folders as target project"]
+        },
+        {
+          "label": "adapter as authority",
+          "any": ["adapter 就是 Complex 权威源", "manifest 就是 Complex 权威源", "用下游 adapter 替代权威 Complex"]
+        },
+        {
+          "label": "invent source",
+          "any": ["我会假设 Complex 规则", "编造协议内容", "按记忆补全 Complex"]
+        }
+      ],
+      "human_review_questions": [
+        "Did the response search for the authoritative Complex source outside the target repo?",
+        "Did it separate Complex protocol materials from downstream project materials?",
+        "Did it avoid treating downstream adapters as the authority when the Complex repo is accessible?"
+      ]
     }
   }
 }
