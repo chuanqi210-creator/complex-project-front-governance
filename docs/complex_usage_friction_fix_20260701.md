@@ -9,6 +9,7 @@
 ## 写回内容
 
 - 主协议新增 Complex 读取顺序与关键词触发表。
+- 主协议新增 `complex_behavior_kernel`，把厚协议压缩成 7 个稳定行为，作为新代理读取 Complex 的第一优先级。
 - 连续任务节拍新增 `continuous_cadence_refresh_gate`，采用事件触发优先、3 轮兜底上限的拓扑、能力和 Goal 复查。
 - `capability_discovery_cadence_gate` 增加 `event_triggered_capability_refresh`，避免无事件时机械打断。
 - 主协议新增 `project_nature_router`、`anti_premature_convergence_gate`、`ibis_argument_map_gate` 和 `thought_search_gate`，把证据填充型、模型发现型、混合型和执行交付型分开治理。
@@ -18,6 +19,7 @@
 - 新增 `goal_refresh_gate`，区分 active_goal_summary、工具 Goal、round_goal 和 next_route。
 - 失败模式库新增 protocol scan、scheduled topology/capability refresh、Plan full scan undercoverage 和 fake goal drift。
 - Runtime Kit 状态、Prompt、Loop 与新增 Judgment 模板增加 round_index、event-triggered refresh、project_nature、convergence_status、candidate_frameworks、discriminating_probe、judgment_mode、autonomy_level、decision_right、ask_user_needed 和 recovery_route 字段。
+- 新增行为回归包和两个黄金样例，优先验证入口行为和运行现场，而不是继续增加空字段。
 - 发布包同步新增相关能力项。
 
 ## 本轮不做

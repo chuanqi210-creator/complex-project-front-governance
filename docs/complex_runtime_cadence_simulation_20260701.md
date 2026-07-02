@@ -417,9 +417,33 @@
 - 新协议可检查到 `route_reflection_missing_gap`。
 - 重要动态判断既有自治，也有可恢复的判断证据。
 
+## Scenario 14: 规则太密时先回到行为内核
+
+用户提示：
+
+```text
+完整扫描 Complex 后推进，但不要被协议术语带偏。
+```
+
+旧风险：
+
+- 模型列出大量 gate、router、controller 和模板字段，却没有形成可执行主线。
+- 新项目代理知道“规则很多”，但本轮不知道先恢复状态、判断性质、划清决策权还是跑工具。
+
+新期望：
+
+- 先启用 `complex_behavior_kernel`，用 7 个行为压缩本轮主线。
+- 机制名只作为实现细节：先行为内核，再 project_nature、adaptive judgment、Loop、交付和恢复。
+- 若新增规则不能映射到行为内核，默认进入经验库、样例或 backlog，不进入主协议主体。
+
+模拟结论：
+
+- 新协议可检查到 `rule_density_attention_overload_gap`、`behavior_regression_missing_gap` 和 `golden_example_missing_gap`。
+- `docs/behavior_regression_cases_20260702.json` 与两个黄金样例把“写进协议”推进到“能被新代理模仿和检查”。
+
 ## Overall Result
 
-本轮修复把用户体验问题转成 21 个可触发机制：
+本轮修复把用户体验问题转成 25 个可触发机制：
 
 1. `protocol_scan_sequence`
 2. `complex_prompt_bootstrap_gate`
@@ -442,5 +466,9 @@
 19. `decision_rights_matrix`
 20. `judgment_depth_ladder`
 21. `route_evaluator_reflection_gate`
+22. `complex_behavior_kernel`
+23. `behavior_regression_pack`
+24. `golden_runtime_examples`
+25. `mechanism_layering_map`
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

@@ -27,6 +27,7 @@ This project is the current authoritative workspace for the Complex project cont
 - Prefer small smoke tests before adopting new capabilities. Do not install or route through large skill/plugin sets just because they exist; record selected, rejected, backlog, and why.
 - If a user names external tools, skills, APIs, databases, accounts, browsers, Auto Research, or Complex, bind those words into an explicit capability list before executing; state what will be used, skipped, backlogged, or delegated to manual user action.
 - If another project asks to read Complex or Auto Research, first spend visible effort understanding the relevant protocol components, dynamic loop, scoring/route-back rules, delivery boundaries, and tool boundaries; do not start the project work from a shallow protocol mention.
+- When another project reads Complex, start from `complex_behavior_kernel`: restore true state, classify project nature, assign decision rights, pick one highest-leverage question, run the lightest useful validation/execution, deliver to the right audience, and leave next-route recovery. Mechanism names are implementation details.
 - If a user only says "use Complex" or "按 Complex 推进", show or apply the `complex_setup_question_card`: delivery audience, capability permissions, collaboration topology, cadence, and manual-action boundaries.
 - Show new users the `user_visible_trigger_guide` in plain language: "先设计提示词/prompt", "连续节拍", "多线程/子代理", "外部工具/账号/API", "完整扫描 Complex", "只要人看版", "模型发现型/先发散研究框架/不要早收敛", "先做问题-观点-论据图", "强自治+护栏", "让 AI 自行判断细节", "动态推进", "只在高风险时问我", and "AI 自己调路线，但保留理由" are available steering words.
 - At Complex entry, classify `project_nature` as evidence_fill, model_discovery, mixed, or execution_delivery. If the model, formula, metric, research frame, or explanation path is unsettled, protect model discovery before evidence filling.
@@ -39,6 +40,8 @@ This project is the current authoritative workspace for the Complex project cont
 ## Runtime Kit
 
 - Treat `templates/` as optional landing pads for new projects: state, evidence, decision, search, question, prompt, framing, argument, judgment, loop, and delivery records.
+- Prefer the filled golden examples in `docs/examples/` when teaching a new project how Runtime Kit records should look. Do not make users infer usage from empty templates alone.
+- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` in addition to recovery verification.
 - Do not turn Runtime Kit templates into new mandatory protocol fields unless repeated real project failures justify promotion.
 - When bootstrapping a new Complex project, prefer a small runtime skeleton over copying the full protocol into the project workspace.
 - Do not ask users to choose ordinary vs major project modes. Complex always uses Goal/Plan/Loop, scoring, delivery alignment, and recovery; high-risk or high-rework work only raises internal evidence and validation intensity.

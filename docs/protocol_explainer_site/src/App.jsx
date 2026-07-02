@@ -37,23 +37,23 @@ const pages = [
 
 const coreOutcomes = [
   {
-    title: "把模糊目标变成可验证主张",
-    text: "先问项目真正想证明什么，再区分愿景、输出、结果和长期影响，避免从一开始就把漂亮表达当成事实。",
+    title: "把厚协议压缩成稳定行为",
+    text: "新项目先执行 7 个行为内核：恢复状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量验证、按对象交付、留下恢复线索。",
     icon: Target,
   },
   {
-    title: "把证据、风险和边界放到执行前",
-    text: "在动手前建立 current_basis、evidence_matrix、resource_boundary 和 claim readiness，先知道哪些能说、哪些只能降级说。",
+    title: "先分清模型发现还是证据填充",
+    text: "框架未定时保护候选路径和可区分探针；模型与指标已定时直接补证据、验证和交付边界，避免过早收敛或过度发散。",
     icon: ShieldCheck,
   },
   {
-    title: "把能力发现显性化",
-    text: "任务开始、阶段切换、阻塞、验证失败和最终主张前复盘 skill、工具、插件、API、子代理和外部方法，不靠临时想起，也不机械搜工具。",
+    title: "让 AI 动态判断，但守住护栏",
+    text: "可逆、低副作用的路线、工具、Loop 和分工由 AI 自行判断；目标、授权、外部写入、不可逆动作和高风险主张必须回问。",
     icon: PuzzlePiece,
   },
   {
-    title: "把复杂度留给系统，不丢给用户",
-    text: "用户可以只用自然语言触发。完整机器字段写进治理文件，用户可见层只保留主张、风险、下一步和必要选择。",
+    title: "用样例和回归提高迁移稳定性",
+    text: "行为回归包固定高风险入口，两个 Runtime Kit 黄金样例展示 evidence_fill 与 model_discovery 应该怎样短而可恢复地落地。",
     icon: UsersThree,
   },
 ];
@@ -61,7 +61,7 @@ const coreOutcomes = [
 const assets = [
   {
     name: "v3 主协议",
-    role: "定义动态阶段控制、证据矩阵、能力发现、Loop 小闭环、评分迭代、风险边界和恢复规则。",
+    role: "定义行为内核、双剖面项目性质、自适应判断、Loop 小闭环、评分迭代、风险边界和恢复规则。",
     file: "protocol/Complex项目持续治理协议_v3_核心版.md",
   },
   {
@@ -79,35 +79,45 @@ const assets = [
     role: "把当前能力、恢复入口、变更清单和本地 verifier 绑定起来。",
     file: "protocol/持续治理协议发布包_20260622.md",
   },
+  {
+    name: "行为回归包",
+    role: "用 8 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    file: "docs/behavior_regression_cases_20260702.json",
+  },
+  {
+    name: "黄金样例",
+    role: "展示 evidence_fill 和 model_discovery 两类项目的最小可用运行现场。",
+    file: "docs/examples/",
+  },
 ];
 
 const capabilityGroups = [
   {
-    title: "材料与依据治理",
-    summary: "先判定哪些材料是 current basis，哪些只是背景、草稿、历史或候选。",
+    title: "行为内核",
+    summary: "先做 7 个稳定行为，再查具体 gate 名称。",
     detail:
-      "协议会登记 source、type、authority、supports_stage 和 current_basis reason。这样旧稿、生成内容和历史记录不会被误当成当前事实。",
+      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量验证/执行、按对象交付、留下 next_route。",
     icon: FileMagnifyingGlass,
   },
   {
-    title: "主张与证据地图",
-    summary: "把项目目标拆成可以被证据支撑或降级的主张链。",
+    title: "双剖面运行",
+    summary: "区分证据填充型、模型发现型、混合型和执行交付型。",
     detail:
-      "通过 evidence_matrix、source_role_map 和 claim_readiness_ladder，区分来源能证明什么、不能证明什么，以及结论能到 idea、source-backed、local、small-loop、pilot 还是 public claim。",
+      "project_nature_router 决定本轮权重：固定模型任务少发散，未定框架任务先保留候选框架、IBIS 论据图和可区分探针。",
     icon: Graph,
   },
   {
-    title: "新领域治理构造",
-    summary: "面对陌生项目，不先找旧模板，而是临时生成本轮治理镜头。",
+    title: "自适应判断",
+    summary: "让 AI 自行处理可逆细节，只在真实边界处回问。",
     detail:
-      "new_domain_governance_builder 至少生成 claim_ladder、evidence_contract、stakeholder_context、execution_validation、risk_ethics_permission、operation_handoff、transfer_boundary 和 deliverable_storyline。",
+      "adaptive_judgment_controller 与 decision_rights_matrix 区分 AI 可自主判断、需要用户确认、需要人工操作或必须阻塞的事项。",
     icon: Compass,
   },
   {
     title: "能力发现与编排",
-    summary: "显性复盘 skill、工具、插件、connector、API、外部方法和子代理。",
+    summary: "显性复盘 skill、工具、插件、connector、API、外部方法和子代理，但不机械打断。",
     detail:
-      "capability_discovery_cadence_gate 规定何时重新考虑能力；skill_plugin_discovery_gate 和 side-effect gate 记录选用、拒绝、权限、副作用和授权边界。",
+      "能力和拓扑复查以事件触发为主；无事件时 lightweight keep，外部写入、账号、付款和发布必须进入授权护栏。",
     icon: PuzzlePiece,
   },
   {
@@ -132,10 +142,10 @@ const capabilityGroups = [
     icon: Package,
   },
   {
-    title: "恢复链与机器看版",
-    summary: "每轮留下 next_route、状态、验证结果和恢复入口。",
+    title: "行为回归与黄金样例",
+    summary: "用用例和填好样例验证新代理能否稳定落地。",
     detail:
-      "append_eof_section_tool、latest_board_tail_check 和 verify_governance_recovery_tool 让后续代理能从最新机器看版恢复，而不是凭聊天记忆继续。",
+      "behavior_regression_pack 覆盖 8 个高风险入口；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -143,45 +153,45 @@ const capabilityGroups = [
 const mechanismSteps = [
   {
     k: "01",
-    title: "低摩擦触发",
-    text: "用户只描述目标、材料和期待结果；AI 自动识别是否为重大项目、连续任务或新领域。",
-    output: "compressed_user_entry",
+    title: "恢复真实状态",
+    text: "先区分 current_basis、not_current_basis、用户最新请求、旧草稿和历史记录。",
+    output: "current_basis",
   },
   {
     k: "02",
-    title: "动态阶段控制",
-    text: "先判断 light、standard、deep 或 continuous 深度，再决定推进、压缩、加深、并行、回退或询问。",
-    output: "dynamic_stage_controller",
+    title: "判断项目性质",
+    text: "先分清 evidence_fill、model_discovery、mixed 或 execution_delivery，以及当前是否已收敛。",
+    output: "project_nature_router",
   },
   {
     k: "03",
-    title: "能力盘点",
-    text: "在执行前扫描本地 skill、工具、插件、API、外部方法和子代理边界，写明选用与拒绝。",
-    output: "capability_discovery_cadence_gate",
+    title: "划清决策权",
+    text: "默认强自治+护栏：AI 处理可逆低副作用细节，目标、授权、不可逆和高风险主张回问。",
+    output: "decision_rights_matrix",
   },
   {
     k: "04",
-    title: "构造证据镜头",
-    text: "围绕最终主张生成临时领域 trace，从经验库抽取相近失败模式，只拿方法，不复制旧模板。",
-    output: "new_domain_governance_builder",
+    title: "抓最高杠杆问题",
+    text: "每轮只处理最能降低返工或推动交付的主问题，不被局部资料缺口和工具兴趣劫持。",
+    output: "round_goal",
   },
   {
     k: "05",
-    title: "选择必要 guard",
-    text: "通过 gate_activation_matrix 区分常驻、风险触发、连续优化和恢复专用检查，控制摩擦。",
-    output: "gate_activation_matrix",
+    title: "轻量验证或执行",
+    text: "按不确定性和副作用选择 no-op、小 Loop、工具烟测、只读子代理或直接执行。",
+    output: "loop / probe",
   },
   {
     k: "06",
-    title: "跑小题验证",
-    text: "用一个小闭环验证最危险的主张或边界，把观察结果写成降级规则。",
-    output: "micro_task_execution_check",
+    title: "按对象交付",
+    text: "人看版、机器恢复版、老师/专家/第三方版分开，不把机器字段直接包装成人话。",
+    output: "delivery_contract",
   },
   {
     k: "07",
-    title: "收束与恢复",
-    text: "输出本轮行动方案、证据矩阵、风险边界、下一步路由、发布包状态和机器看版。",
-    output: "handoff + verifier",
+    title: "留下恢复线索",
+    text: "写清 next_route、route_reason、未决问题、能力/拓扑状态和必要回滚路线。",
+    output: "next_route",
   },
 ];
 
@@ -344,9 +354,9 @@ function Overview({ go }) {
         <img className="hero-image" src={blueprintImage} alt="项目治理蓝图视觉图，展示证据地图、风险边界和持续治理流程" />
         <div className="hero-overlay">
           <p className="eyebrow">适用于复杂项目持续推进</p>
-          <h1>把复杂项目，从模糊想法推进到可验证结果</h1>
+          <h1>把复杂项目，推进成可恢复、可验证、可交付的连续行动</h1>
           <p className="hero-copy">
-            这套持续治理协议不是一份普通项目清单，而是一套持续推进的控制系统：它在每一轮看清目标、证据、能力、风险、验证结果和下一步路线，再决定执行、加深、回退或停止。
+            这套持续治理协议不是一串 gate 名称，而是一套行为内核：每轮先恢复真实状态，判断项目性质和决策边界，再选择一个最高杠杆问题，用最轻有效动作推进，并留下下一轮能接上的恢复线索。
           </p>
           <div className="hero-actions">
             <button className="primary-action" type="button" onClick={() => go("mechanism")}>
@@ -362,9 +372,9 @@ function Overview({ go }) {
       <section className="intro-grid">
         <div className="intro-panel">
           <p className="section-kicker">它解决的问题</p>
-          <h2>复杂项目最大的风险，往往来自“已经开始却没有持续对齐”。</h2>
+          <h2>复杂项目最大的风险，往往来自“规则很多，但本轮行为不稳”。</h2>
           <p>
-            项目推进中最容易把目标说大、把证据看轻、把工具当能力、把一次输出当真实成效。持续治理协议把这些隐性风险持续显性化，并把下一步压缩成一个能执行、能验证、能恢复的行动方案。
+            项目推进中最容易把目标说大、把证据看轻、把工具当能力、把局部资料缺口当主线。Complex 现在先用行为内核压缩复杂度，再按项目性质选择模型发现、证据填充、执行交付或混合路线。
           </p>
         </div>
         <div className="signal-list">
@@ -429,8 +439,8 @@ function Capabilities() {
     <div className="content-page">
       <PageTitle
         label="协议能做什么"
-        title="它把项目持续推进中的关键治理工作，拆成可执行能力。"
-        copy="这些能力不是每次全量展开。协议会按项目风险、阶段深度和用户摩擦动态激活，确保重项目不失控，小项目不过度治理。"
+        title="它把复杂项目推进，压缩成少数稳定行为。"
+        copy="这些能力不是每次全量展开。协议先判断项目性质和自治边界，再按不确定性、风险和交付对象动态激活需要的能力。"
       />
       <div className="capability-layout">
         <div className="capability-list">
@@ -475,8 +485,8 @@ function Mechanism() {
     <div className="content-page">
       <PageTitle
         label="实现方法"
-        title="协议内部是一组低摩擦 gate、路由器和恢复链。"
-        copy="它先决定本轮需要多深，再选择必要的证据镜头、能力发现、小题验证和风险边界。核心不是多填表，而是防止项目在错误层级上推进。"
+        title="先行为内核，再按需调用路由器和 guard。"
+        copy="它先把本轮压缩成一个可执行主线，再选择必要的证据、模型发现、能力发现、小题验证和风险边界。核心不是多填表，而是防止项目在错误层级上推进。"
       />
 
       <section className="timeline">
@@ -496,7 +506,7 @@ function Mechanism() {
         <article className="mechanism-panel">
           <h2>动态激活，而不是全量硬跑</h2>
           <p>
-            `gate_activation_matrix` 把规则分成四类：常驻最小、风险触发、连续优化专用、恢复链专用。这样协议既能覆盖复杂项目，又不会让普通推进变成流程负担。
+            `complex_behavior_kernel` 是第一层，`gate_activation_matrix` 是第二层。先确定本轮行为，再把规则分成常驻最小、风险触发、连续优化专用和恢复链专用，避免普通推进变成流程负担。
           </p>
           <div className="gate-grid">
             {gateTypes.map((gate) => (
@@ -602,7 +612,7 @@ function Advantages() {
       <PageTitle
         label="对比优势"
         title="它比普通项目推进更稳，也比厚重流程更轻。"
-        copy="持续治理协议的优势不在于字段多，而在于它把常见误判持续显性化，把风险语言降级，把能力发现、Loop 验证和恢复链变成可复用机制。"
+        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归包、黄金样例和恢复链防止下一轮重新迷路。"
       />
 
       <section className="comparison-card">
@@ -629,7 +639,7 @@ function Advantages() {
           },
           {
             title: "比项目管理清单更重证据",
-            text: "它不只问任务拆分和时间线，还持续判断哪些主张能成立、证据缺什么、风险能不能越级。",
+            text: "它不只问任务拆分和时间线，还持续判断项目是在发现模型、填充证据、混合推进还是执行交付。",
             icon: ArrowsSplit,
           },
           {
@@ -639,7 +649,7 @@ function Advantages() {
           },
           {
             title: "比全量治理更低摩擦",
-            text: "用户只需要说目标和材料，复杂字段由 AI 维护；只有会降低返工时才问高杠杆问题。",
+            text: "用户只需要说目标和材料，复杂字段由 AI 维护；可逆细节 AI 自行判断，授权、不可逆和高风险边界再回问。",
             icon: RocketLaunch,
           },
         ].map((item) => (

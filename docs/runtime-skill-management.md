@@ -14,6 +14,13 @@ Runtime skill management keeps capability use tied to project progress:
 4. Test risky capabilities with a small task before relying on them.
 5. Write the result back into state, evidence, decisions, loop checks, or delivery records.
 
+Before copying blank templates, check whether a filled golden example is closer to the task:
+
+- `docs/examples/evidence_fill_minimal_runtime/` for fixed-model evidence and delivery work.
+- `docs/examples/model_discovery_minimal_runtime/` for unsettled framing and research-model discovery.
+
+Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
+
 ## Startup Choice Card
 
 When a user starts a project by saying "use Complex", "按 Complex 推进", or similar, do not wait for the user to know hidden trigger words. Use the `complex_setup_question_card` from `templates/question.md`, or state safe defaults if the task is low risk.
@@ -209,6 +216,8 @@ For protocol maintenance work, update the relevant protocol or release package o
 ## Anti-Bloat Rule
 
 Runtime skill management should reduce friction. It should not become a ritual.
+
+Use the behavior kernel as the deletion test. If a proposed skill rule, capability field, or template addition does not improve state recovery, project-nature classification, decision rights, highest-leverage choice, light validation/execution, delivery contract, or next-route recovery, keep it out of the core path.
 
 Do not add a new skill, template, gate, or required field unless it meets at least one of these tests:
 

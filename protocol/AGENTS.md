@@ -16,6 +16,7 @@ This directory contains the current authoritative Complex project continuous-gov
 - For runtime capability work, use `.codex/shared-skills.json` as a candidate list only; still verify actual callable tools and side-effect boundaries in the current environment.
 - When users mention external tools, skills, APIs, databases, browser access, accounts, Auto Research, or Complex, convert those hints into an explicit capability list with selected, rejected, backlog, and manual-action items before executing.
 - When a new project asks to read Complex or Auto Research, first understand the relevant protocol components, tool boundaries, Loop/scoring rules, runtime templates, and delivery rules; shallow acknowledgment is not enough.
+- When a new project reads Complex, start from `complex_behavior_kernel`: restore true state, classify project nature, assign decision rights, pick one highest-leverage question, run the lightest useful validation/execution, deliver to the right audience, and leave next-route recovery. Use mechanism names only after this behavior spine is clear.
 - When a user only says "use Complex" or "按 Complex 推进", apply the `complex_setup_question_card`: delivery audience, external capability permission, collaboration topology, cadence, and manual-action boundaries. If unanswered and safe, record defaults instead of blocking.
 - Show new users the `user_visible_trigger_guide` in ordinary language so they know "先设计提示词/prompt", "连续节拍", "多线程/子代理", "外部工具/账号/API", "完整扫描 Complex", "只要人看版", "模型发现型/先发散研究框架/不要早收敛", "先做问题-观点-论据图", "强自治+护栏", "让 AI 自行判断细节", "动态推进", "只在高风险时问我", and "AI 自己调路线，但保留理由" are available steering words.
 - At Complex entry, classify `project_nature` as evidence_fill, model_discovery, mixed, or execution_delivery. If model, formula, metric, research frame, explanation path, or story line is unsettled, protect divergent model discovery before evidence filling.
@@ -35,6 +36,8 @@ This directory contains the current authoritative Complex project continuous-gov
 
 - Keep protocol artifacts inside this repository when one is clear.
 - Put Runtime Kit templates in `templates/` and runtime capability notes in `docs/runtime-skill-management.md`; model-discovery landing pads belong in `templates/framing.md` and `templates/argument.md`, and adaptive route/depth decisions belong in `templates/judgment.md`.
+- Put filled Runtime Kit examples in `docs/examples/`; use them to reduce onboarding friction before adding more empty template fields.
+- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` along with the recovery verifier.
 - Put project-level capability manifests and optional local skills in `.codex/`.
 - Put copied historical records in `docs/history/` and migration notes in `docs/migration/`.
 - Use `/Users/chuchenqidawang/Documents/日常/03_产出_Deliverables/` for general final deliverables that do not belong to a specific research project.

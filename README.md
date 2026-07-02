@@ -11,6 +11,7 @@
 - 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 220. 当前机器看版`
 - 当前 next route：`continue_self_optimization_with_skill_adoption_expansion_or_stop`
 - 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-220 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制、模型发现层与反早收敛机制，以及 `adaptive_judgment_controller` 自适应深层判断层。
+- 当前重构方向：用 `complex_behavior_kernel` 把厚协议压缩成 7 个稳定行为，并用行为回归包和黄金样例验证新项目能落地，而不是继续堆规则名。
 - GitHub 同步策略：本仓库保留当前权威协议和 Runtime Kit；公开说明、可视化站点、模板和 reusable protocol package 均从该工作区同步。
 
 ## 项目目标
@@ -38,6 +39,10 @@
 - `templates/judgment.md`：自适应判断记录，用于路线、深度、工具、协作、回问和回滚边界。
 - `templates/prompt.md`：提示词设计前置模板，用于先扫描 Complex、设计项目专用执行 prompt、确认后再推进。
 - `docs/runtime-skill-management.md`：运行时 skill / tool / plugin / API / 外部方法选择、拒绝、试用和写回规则。
+- `docs/complex_mechanism_layering_20260702.md`：机制分层说明，帮助新代理区分行为内核、路由器、触发门、模板、历史和验证器。
+- `docs/behavior_regression_cases_20260702.json`：8 个高风险入口行为回归用例。
+- `docs/examples/`：两个填好的 Runtime Kit 黄金样例，覆盖 evidence_fill 和 model_discovery。
+- `tools/check_behavior_regression_pack.py`：行为回归包结构检查。
 - `docs/history/`：从旧目录同步来的历史回归记录、真实项目小题和治理样例。
 - `docs/migration/`：独立化迁移清单和路径说明。
 - `docs/Complex协议复盘与优化人看版_20260629.md`：新能源汽车项目作为例子的 Complex 协议人看版复盘。
@@ -57,6 +62,16 @@
 ```
 
 AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问题或安全默认、项目专用 `copy_ready_prompt` 和 `execution_bridge`。用户确认前不应进入业务执行、发布、提交外部系统或把 prompt 当成已授权操作。
+
+新代理扫描 Complex 时，先抓 7 个行为内核，再读机制名：
+
+1. 恢复真实状态。
+2. 判断项目性质和收敛状态。
+3. 划清 AI 自治与用户授权边界。
+4. 选择一个最高杠杆问题。
+5. 用最轻有效动作验证或执行。
+6. 按交付对象输出。
+7. 留下 next_route 和恢复线索。
 
 如果你的任务不是“按既定模型填证据”，而是研究框架、解释路径、指标模型或故事主线还没定，可以直接加一句：
 
@@ -116,6 +131,11 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 - `loop.md`：5-30 分钟小循环、评分和 route-back/execute 判断。
 - `delivery.md`：人看版、机器恢复版、老师/专家/第三方版本的交付契约。
 
+如果不知道怎么填，先看两个黄金样例：
+
+- `docs/examples/evidence_fill_minimal_runtime/`：模型和指标已定，只补证据、验证和交付边界。
+- `docs/examples/model_discovery_minimal_runtime/`：研究框架未定，先保留候选框架、论据图和可区分探针。
+
 ### 连续节拍中的每轮 prompt
 
 第一轮 `copy_ready_prompt` 是总规划，后续每轮不应把它降级成一句背景原则。连续项目每轮开始时，AI 应先触发 `round_prompt_rehydration_gate`：从总 prompt / active_goal_summary、最新状态和本轮最高杠杆问题压缩出 `round_execution_prompt`，再基于它生成 Plan 和 Loop。
@@ -141,11 +161,12 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 协议或恢复链修改后，优先运行：
 
 ```bash
+python3 tools/check_behavior_regression_pack.py
 python3 tools/test_verify_governance_recovery.py
 python3 tools/verify_governance_recovery.py --preset continuous-self-optimization --latest-heading '## 220. 当前机器看版' --expected-route continue_self_optimization_with_skill_adoption_expansion_or_stop
 ```
 
-当前基线要求上述两条命令分别返回 `ok` 和 `failure_count: 0`。
+当前基线要求上述命令分别返回行为包 `ok`、治理测试 `ok` 和恢复验证 `failure_count: 0`。
 
 ## 来源
 
