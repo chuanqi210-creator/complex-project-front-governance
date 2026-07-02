@@ -59,6 +59,8 @@ Use these to teach behavior:
 - `docs/examples/model_discovery_minimal_runtime/`
 - `docs/behavior_regression_cases_20260702.json`
 - `docs/behavior_transcript_review_rules_20260702.json`
+- `docs/behavior_review_result_template_20260702.md`
+- `docs/real_project_pressure_test_result_template_20260702.md`
 - `tools/check_behavior_regression_pack.py`
 - `tools/review_behavior_transcript.py`
 
@@ -87,10 +89,11 @@ These keep the project recoverable. They should not be copied into new project w
 
 ## New Project Read Order
 
-1. README recommended entry.
-2. Behavior kernel in the main protocol.
-3. Setup question card and user-visible triggers.
-4. Project-nature router and adaptive judgment boundary.
-5. Runtime Kit template subset for the task.
-6. Examples matching the project profile.
-7. Detailed gates only when the route actually triggers them.
+1. `docs/complex_new_agent_5_minute_quickstart_20260702.md`.
+2. README recommended entry.
+3. Behavior kernel in the main protocol.
+4. Setup question card and user-visible triggers.
+5. Project-nature router and adaptive judgment boundary.
+6. Runtime Kit template subset for the task.
+7. Examples matching the project profile.
+8. Detailed gates only when the route actually triggers them.

@@ -62,6 +62,28 @@ Pass means "no obvious marker-level regression." It does not mean the response w
 - Did it preserve the main goal while handling local details?
 - Did it avoid turning Complex into visible process burden?
 
+## Result Record
+
+After reviewing a real response, record the result with:
+
+- `docs/behavior_review_result_template_20260702.md`
+
+Minimum fields to keep:
+
+- `case_id`
+- `transcript_location`
+- marker result
+- human pass/fail
+- user correction count
+- main failure if any
+- decision: no change, update rule, update case, update golden example, or promote candidate
+
+For full end-to-end project samples, use:
+
+- `docs/real_project_pressure_test_result_template_20260702.md`
+
+This keeps the next phase focused on real evidence: fewer claims that Complex "should work", more records of whether it reduced correction and rework.
+
 ## Promotion Rule
 
 If a real transcript fails and the failure is repeated or high-impact:

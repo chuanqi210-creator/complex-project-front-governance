@@ -90,6 +90,16 @@ const assets = [
     file: "tools/review_behavior_transcript.py",
   },
   {
+    name: "结果记录模板",
+    role: "记录真实回复审查和端到端项目压力测试结果，衡量用户纠偏、证据边界和交付质量。",
+    file: "docs/behavior_review_result_template_20260702.md",
+  },
+  {
+    name: "5 分钟上手版",
+    role: "让新代理先抓第 222 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
+    file: "docs/complex_new_agent_5_minute_quickstart_20260702.md",
+  },
+  {
     name: "黄金样例",
     role: "展示 evidence_fill 和 model_discovery 两类项目的最小可用运行现场。",
     file: "docs/examples/",
@@ -148,9 +158,9 @@ const capabilityGroups = [
   },
   {
     title: "行为回归与黄金样例",
-    summary: "用用例、真实回复审查和填好样例验证新代理能否稳定落地。",
+    summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 8 个高风险入口；review_behavior_transcript.py 检查真实回复是否遗漏必需行为或出现禁忌动作；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 8 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -617,7 +627,7 @@ function Advantages() {
       <PageTitle
         label="对比优势"
         title="它比普通项目推进更稳，也比厚重流程更轻。"
-        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、黄金样例和恢复链防止下一轮重新迷路。"
+        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、结果记录、黄金样例和恢复链防止下一轮重新迷路。"
       />
 
       <section className="comparison-card">
