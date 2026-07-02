@@ -81,7 +81,7 @@ Decision rights are two-sided:
 - Prevent unsafe AI overreach.
 - Prevent unnecessary human intervention.
 
-If the next step is clear, low-risk, reversible, and inside existing authorization, continue and record why the user was not asked. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
+If the next step is clear, low-risk, reversible, and inside existing authorization, continue and record why the user was not asked. Do not write "next time you say continue" when `next_route` is already queued; either execute the next route now or, if a real turn/tool boundary stops the run, record the recovery route without making user continuation a permission condition. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
 
 If the user asks for independent review inside the same session, do not claim roleplay is independent. Use clean context, a separate reviewer/thread, read-only audit subagent, or a fact-ledger packet when independence matters. If you stay in the same session, label it as diagnostic self-review.
 
@@ -108,5 +108,6 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
 如果缺少我的确认，请给出少量可默认的问题；可逆、低副作用的细节由你自行判断，高风险、授权、外部写入、不可逆动作和公开口径变化再问我。
 如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
+不要用“下次你说继续时再推进”作为默认收尾。若下一拍已 queued 且低风险可逆，默认自动进入下一拍；若受回合或工具边界限制必须暂停，只记录 next_route，不把用户说“继续”当成许可门。
 本轮只抓一个最高杠杆问题，用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
 ```

@@ -68,6 +68,8 @@ AI must ask before:
 
 `known_next_step_auto_execute_rule`: if `next_route`, `round_goal`, state, or accessible materials already define a clear, low-risk, reversible next step, execute or validate it instead of asking "should I continue?"
 
+Do not end a continuous-cadence response with "next time you say continue" or equivalent phrasing when the next route is already clear. If the environment or turn boundary truly prevents further work, record `next_route` as a recovery fact, not as a user-permission gate. The default is `auto_continue_until_boundary`, not `wait_for_user_continue`.
+
 `context_pointer_first_intake`: if the user provides directories, files, links, exports, or material locations, read and summarize accessible materials before asking for manual cleanup, copy-paste, or summaries. Record `resource_boundary` only when access or authorization blocks intake.
 
 `user_input_classification_gate`: classify new user input as fact, preference, authorization, local correction, goal change, or noise/possible misleading. Only goal changes and authorization boundaries rewrite the mainline.

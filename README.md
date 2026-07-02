@@ -30,7 +30,7 @@ Complex starts from seven stable behaviors, not from a long menu of gates:
 6. Deliver to the right audience in the right form.
 7. Leave `next_route` and recovery notes.
 
-The practical default is strong autonomy with guardrails: if the next step is clear, low-risk, reversible, and within existing authorization, AI should continue instead of asking whether to continue. If the user gives directories, files, links, or material locations, AI should read accessible materials before asking for manual summaries.
+The practical default is strong autonomy with guardrails: if the next step is clear, low-risk, reversible, and within existing authorization, AI should continue instead of asking whether to continue. A queued `next_route` is an execution route, not a prompt for the user to say "continue" later. If a real turn or tool boundary stops the run, record the recovery route without making user continuation a permission gate. If the user gives directories, files, links, or material locations, AI should read accessible materials before asking for manual summaries.
 
 ## Best Project Prompt
 
@@ -59,6 +59,7 @@ If the project should move directly:
 采用强自治+护栏：可逆、低副作用的细节由 AI 自行判断；目标、授权、不可逆动作、外部写入、公开口径或高风险主张变化时再问我。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
 请显式判断这些 steering words 是否适用：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；少问我 / 能推进就继续 / 我给目录你自己读；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+如果 next_route / round_goal 已经给出清楚、低风险、可逆的下一步，不要以“下次你说继续”作为收尾；默认自动推进到下一拍。只有真实授权、外部写入、不可逆动作、高风险主张或回合/工具边界才暂停。
 ```
 
 Useful steering words:

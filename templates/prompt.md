@@ -90,6 +90,11 @@ Plan 模式：
 - 如果当前界面支持 Plan 模式：先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再进入执行。
 - 如果当前界面不支持 Plan 模式：仍先输出计划和 round_execution_prompt，不直接跳到业务执行。
 
+自动推进默认：
+- 如果 next_route / round_goal / state 已经给出清楚、低风险、可逆且已授权的下一步：直接进入下一拍，不要等待用户说“继续”。
+- 禁止默认收尾话术：下次你说继续时、等你说继续、你确认继续后、是否继续、要不要继续。
+- 如果受回合、工具或权限边界限制必须暂停：只记录 next_route 和暂停原因，不把用户说“继续”写成许可条件。
+
 Steering words to preserve:
 - 开启 Plan 模式 / 先规划再执行：
 - 模型发现型 / 先发散研究框架 / 不要早收敛：
@@ -140,7 +145,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。
+请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。
 ```
 
 ## Execution Bridge

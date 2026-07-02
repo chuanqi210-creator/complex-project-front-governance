@@ -30,6 +30,7 @@ User-visible trigger guide:
 > You can say these steering words to guide the agent: "开启 Plan 模式 / 先规划再执行", "模型发现型 / 先发散研究框架 / 不要早收敛", "证据填充型 / 模型和指标已定", "连续节拍 / 总规划别丢 / 每轮 prompt 重水化", "少问我 / 能推进就继续 / 我给目录你自己读", "独立评审 / 客观审查 / 避免上下文污染", "外部工具 / 账号 / API / skill", and "只要人看版".
 > You can also say "先设计提示词/prompt", "多线程/子代理", "完整扫描 Complex", or "先做问题-观点-论据图" when those operating choices matter.
 > You can also say "强自治+护栏", "让 AI 自行判断细节", "动态推进", "只在高风险时问我", or "AI 自己调路线，但保留理由" when you want the agent to handle route, depth, tool, and collaboration details unless a real boundary is crossed.
+> In continuous cadence, a clear queued `next_route` should auto-execute when low-risk and reversible. The agent should not ask the user to say "continue" unless a real authorization, external-write, irreversible-action, high-risk, turn, or tool boundary exists.
 
 ## Complex Prompt Bootstrap Card
 

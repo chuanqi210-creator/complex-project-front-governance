@@ -217,7 +217,7 @@
     },
     {
       "case_id": "known_next_step_auto_execute",
-      "user_prompt": "上一轮 next_route 已经写清楚下一步，继续按 Complex 推进。",
+      "user_prompt": "上一轮状态写着 v125 completed; v126 queued。按 Complex 连续节拍推进。",
       "project_nature": "mixed",
       "expected_triggers": [
         "complex_behavior_kernel",
@@ -229,11 +229,13 @@
       "expected_behavior": [
         "Check whether the next step is clear, low-risk, reversible, and inside existing authorization.",
         "Continue with the next action when safe instead of asking whether to continue.",
-        "Record why user intervention was unnecessary and leave the next recovery route."
+        "Record why user intervention was unnecessary and leave the next recovery route.",
+        "Avoid ending with a user-permission phrase such as 'next time you say continue' when the next route is already queued."
       ],
       "forbidden_behavior": [
         "Ask whether to continue when next_route is clear and no new authorization is needed.",
-        "Treat polite confirmation as a substitute for executing the known next step."
+        "Treat polite confirmation as a substitute for executing the known next step.",
+        "Tell the user to say continue next time when a low-risk queued next route is available."
       ],
       "expected_runtime_records": [
         "state.md",
