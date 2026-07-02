@@ -9,11 +9,11 @@ Goal: get useful behavior quickly without reading every historical gate.
 Read:
 
 - `README.md`
-- latest recovery anchor: `protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` -> `## 222. 当前机器看版`
+- latest recovery anchor: `protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` -> `## 223. 当前机器看版`
 
 Remember:
 
-- `## 222` is the latest recovery state.
+- `## 223` is the latest recovery state.
 - `complex_behavior_kernel` is the execution spine.
 - Historical sections such as `## 220` are useful context, not the current entry.
 
@@ -30,6 +30,8 @@ Before planning, compress the task into these seven behaviors:
 7. Leave next-route recovery.
 
 If a gate name competes with these behaviors, the behavior kernel wins.
+
+Decision rights are two-sided: prevent unsafe AI overreach, but also prevent unnecessary human intervention. If the next step is clear, low-risk, reversible, and inside existing authorization, continue and record why the user was not asked. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
 
 ## Minute 2-3: Classify The Project
 
@@ -74,11 +76,13 @@ If the user only says "按 Complex 推进", give short defaults instead of a mod
 
 Then make a narrow `round_goal` and execute the lightest useful next action.
 
+If the user asks for "independent review" inside the same session, do not claim roleplay is independent. Either route to clean context, separate reviewer/thread, read-only audit subagent, or a fact-ledger-only packet; if you stay in the same session, label it as diagnostic self-review.
+
 ## When Something Feels Wrong
 
 Do not immediately add a new protocol rule.
 
-1. Map the failure to one of the 8 behavior cases in `docs/behavior_regression_cases_20260702.json`.
+1. Map the failure to one of the canonical behavior cases in `docs/behavior_regression_cases_20260702.json`.
 2. Run transcript review:
 
 ```bash
@@ -94,5 +98,6 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
 如果缺少我的确认，请给出少量可默认的问题；可逆、低副作用的细节由你自行判断，高风险、授权、外部写入、不可逆动作和公开口径变化再问我。
+如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
 本轮只抓一个最高杠杆问题，用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
 ```

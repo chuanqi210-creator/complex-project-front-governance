@@ -4,7 +4,7 @@ Purpose: close the gap between "the behavior regression cases exist" and "a real
 
 ## What This Adds
 
-- `docs/behavior_transcript_review_rules_20260702.json`: marker groups and human-review questions for the 8 canonical behavior cases.
+- `docs/behavior_transcript_review_rules_20260702.json`: marker groups and human-review questions for the canonical behavior cases.
 - `tools/review_behavior_transcript.py`: a small reviewer that checks a real transcript against one case.
 - `tools/check_behavior_regression_pack.py`: still checks the case bank, and now also validates that every case has transcript review rules.
 
@@ -60,6 +60,7 @@ Pass means "no obvious marker-level regression." It does not mean the response w
 - Did the agent reduce user correction cost?
 - Did it choose the right depth for this project?
 - Did it preserve the main goal while handling local details?
+- Did it avoid asking the user to do low-risk work the agent could safely do itself?
 - Did it avoid turning Complex into visible process burden?
 
 ## Result Record

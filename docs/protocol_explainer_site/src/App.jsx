@@ -48,7 +48,7 @@ const coreOutcomes = [
   },
   {
     title: "让 AI 动态判断，但守住护栏",
-    text: "可逆、低副作用的路线、工具、Loop 和分工由 AI 自行判断；目标、授权、外部写入、不可逆动作和高风险主张必须回问。",
+    text: "可逆、低副作用的路线、工具、Loop 和分工由 AI 自行判断；目标、授权、外部写入、不可逆动作和高风险主张必须回问，也不能把可读材料和已知 next_route 甩回给人。",
     icon: PuzzlePiece,
   },
   {
@@ -81,7 +81,7 @@ const assets = [
   },
   {
     name: "行为回归包",
-    role: "用 8 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    role: "用 11 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior_regression_cases_20260702.json",
   },
   {
@@ -96,7 +96,7 @@ const assets = [
   },
   {
     name: "5 分钟上手版",
-    role: "让新代理先抓第 222 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
+    role: "让新代理先抓第 223 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
     file: "docs/complex_new_agent_5_minute_quickstart_20260702.md",
   },
   {
@@ -160,7 +160,7 @@ const capabilityGroups = [
     title: "行为回归与黄金样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 8 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 11 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];

@@ -32,10 +32,25 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
 - decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
 - ask_user_needed: yes / no
+- ask_user_necessity: necessary / unnecessary / manual_action_required
+- ai_can_continue_without_user: yes / no
+- human_input_drift_risk: low / medium / high
 - ai_decided_without_user_reason:
 - rollback_or_recovery_route:
 - route_evaluator_reflection_status: not_needed / pending / complete
 - last_strategic_or_critical_judgment:
+
+## Human Intervention Boundary
+
+- ai_auto_continue_allowed:
+- known_next_step_auto_execute_rule: applicable / not_applicable / blocked_by_risk_or_authorization
+- unnecessary_user_intervention_reason:
+- must_ask_user_for:
+- manual_action_required_for:
+- context_pointers_user_provided:
+- materials_ai_should_read_itself:
+- user_input_classification: fact / preference / authorization / local_correction / goal_change / noise_or_possible_misleading
+- independent_review_context_separation: not_needed / required / degraded_to_same_session_diagnostic
 
 ## User Choices
 

@@ -8,9 +8,9 @@
 
 - 当前主协议：`protocol/Complex项目持续治理协议_v3_核心版.md`
 - 当前低摩擦入口：`protocol/Complex项目持续治理_低摩擦用户入口_20260622.md`
-- 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 222. 当前机器看版`
+- 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 223. 当前机器看版`
 - 当前 next route：`continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop`
-- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-222 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制、模型发现层与反早收敛机制、`adaptive_judgment_controller` 自适应深层判断层、行为内核、transcript 审查和真实样本结果记录格式。
+- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-222 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制、模型发现层与反早收敛机制、`adaptive_judgment_controller` 自适应深层判断层、行为内核、反人工漂移约束、transcript 审查和真实样本结果记录格式。
 - 当前重构方向：用 `complex_behavior_kernel` 把厚协议压缩成 7 个稳定行为，并用行为回归包和黄金样例验证新项目能落地，而不是继续堆规则名。
 - GitHub 同步策略：本仓库保留当前权威协议和 Runtime Kit；公开说明、可视化站点、模板和 reusable protocol package 均从该工作区同步。
 
@@ -40,8 +40,8 @@
 - `templates/prompt.md`：提示词设计前置模板，用于先扫描 Complex、设计项目专用执行 prompt、确认后再推进。
 - `docs/runtime-skill-management.md`：运行时 skill / tool / plugin / API / 外部方法选择、拒绝、试用和写回规则。
 - `docs/complex_mechanism_layering_20260702.md`：机制分层说明，帮助新代理区分行为内核、路由器、触发门、模板、历史和验证器。
-- `docs/behavior_regression_cases_20260702.json`：8 个高风险入口行为回归用例。
-- `docs/behavior_transcript_review_rules_20260702.json`：8 个行为案例的 transcript 审查规则，记录必需行为标记、禁忌标记和人工复核问题。
+- `docs/behavior_regression_cases_20260702.json`：11 个高风险入口行为回归用例。
+- `docs/behavior_transcript_review_rules_20260702.json`：11 个行为案例的 transcript 审查规则，记录必需行为标记、禁忌标记和人工复核问题。
 - `docs/behavior_transcript_review_guide_20260702.md`：行为回归从结构检查到真实对话 transcript 审查的使用说明。
 - `docs/behavior_review_result_template_20260702.md`：真实回复审查结果记录格式，用于累计 8-12 条 transcript 样本。
 - `docs/real_project_pressure_test_result_template_20260702.md`：端到端真实项目压力测试结果格式，用于 evidence_fill / model_discovery 样本。
@@ -73,13 +73,13 @@ AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问
 
 1. 恢复真实状态。
 2. 判断项目性质和收敛状态。
-3. 划清 AI 自治与用户授权边界。
+3. 划清 AI 自治与用户授权边界，并先判断人工介入是否真的必要。
 4. 选择一个最高杠杆问题。
 5. 用最轻有效动作验证或执行。
 6. 按交付对象输出。
 7. 留下 next_route 和恢复线索。
 
-`## 222. 当前机器看版` 是恢复链的最新状态锚点；`complex_behavior_kernel` 是执行层的第一行为锚点。新代理恢复时先确认 222 的 current state 和 next_route，再用 7 步行为内核压缩本轮行动，而不是从第 220 轮 skill 同步记录或长 gate 名单开始。
+`## 223. 当前机器看版` 是恢复链的最新状态锚点；`complex_behavior_kernel` 是执行层的第一行为锚点。新代理恢复时先确认 223 的 current state 和 next_route，再用 7 步行为内核压缩本轮行动，而不是从第 220 轮 skill 同步记录或长 gate 名单开始。
 
 如果是第一次接手 Complex，先读 `docs/complex_new_agent_5_minute_quickstart_20260702.md`，再按任务类型选择黄金样例或 Runtime Kit 模板。
 
@@ -112,6 +112,8 @@ AI 还应先判断 `project_nature`：证据填充型、模型发现型、混合
 
 AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏”，自行处理计划细节、Loop 探针、证据深度、工具取舍、临时分工、长期线程职责微调和发散/收敛节奏；只有主目标改变、账号/API/付款/发布/外部写入、不可逆动作、交付公开口径变化或证据不足却要对外强主张时，才回问用户。
 
+同时启用 `human_intervention_drift_guard`：人工介入默认是成本和潜在漂移源。若 `next_route`、`round_goal`、state 或用户给出的材料位置已经指向明确、低风险、可逆的下一步，AI 应继续推进并记录理由，不应停在“是否继续”；若用户给出目录、文件或链接，AI 应优先自行读取和归纳，只有权限、隐私、账号、外部写入或现实责任边界才要求人工操作。
+
 ### 可选触发词
 
 新用户不需要猜隐藏口令。可以直接说：
@@ -120,6 +122,8 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 - `先设计提示词/prompt`：先生成项目专用执行 prompt，确认后再推进。
 - `模型发现型 / 先发散研究框架 / 不要早收敛 / 先做问题-观点-论据图`：先保护候选框架、反例和可区分探针，再判断何时转入证据填充。
 - `强自治+护栏 / 让 AI 自行判断细节 / 动态推进 / 只在高风险时问我 / AI 自己调路线，但保留理由`：AI 自行选择路线、深度、工具、分工和发散/收敛节奏，并在战略或关键判断时留下选择理由、误判风险和回滚路线。
+- `少问我 / 能推进就继续 / 已知 next_route 就继续 / 我给目录你自己读`：先判断人工介入是否必要；低风险可逆且材料可读时，AI 自动推进并记录理由。
+- `独立评审 / 客观审查 / 避免上下文污染`：同一 session 自评只能算 diagnostic；真正独立评审需要清上下文、新线程、只读审计子代理或事实账本输入。
 - `连续节拍`：每轮先重构 `round_execution_prompt`，再生成 Plan、Loop、评分路由和 `next_route`；Codex 工具 Goal 默认每拍一个窄目标。工具、子代理/线程职责、goal 和 master prompt 采用事件触发优先的复查，3 轮只是兜底上限。
 - `多线程/子代理`：先判断主线程、临时子代理或长期线程哪种拓扑合适，再执行。
 - `外部工具/账号/API`：先建立能力候选清单，写清 selected / rejected / backlog / manual action。
@@ -174,7 +178,7 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
 python3 tools/test_verify_governance_recovery.py
-python3 tools/verify_governance_recovery.py --preset continuous-self-optimization --latest-heading '## 222. 当前机器看版' --expected-route continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop
+python3 tools/verify_governance_recovery.py --preset continuous-self-optimization --latest-heading '## 223. 当前机器看版' --expected-route continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop
 ```
 
 当前基线要求上述命令分别返回行为包 `ok`、transcript rules `passed: true`、治理测试 `ok` 和恢复验证 `failure_count: 0`。

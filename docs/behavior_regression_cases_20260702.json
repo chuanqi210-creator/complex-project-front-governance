@@ -9,7 +9,10 @@
     "continuous_cadence_rehydrate",
     "external_api_guardrail",
     "stale_goal_migration",
-    "human_readable_delivery_contract"
+    "human_readable_delivery_contract",
+    "known_next_step_auto_execute",
+    "context_pointer_first_intake",
+    "independent_review_context_separation"
   ],
   "cases": [
     {
@@ -210,6 +213,83 @@
       ],
       "expected_runtime_records": [
         "delivery.md"
+      ]
+    },
+    {
+      "case_id": "known_next_step_auto_execute",
+      "user_prompt": "上一轮 next_route 已经写清楚下一步，继续按 Complex 推进。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "complex_behavior_kernel",
+        "ask_user_necessity_gate",
+        "known_next_step_auto_execute_rule",
+        "round_goal",
+        "next_route"
+      ],
+      "expected_behavior": [
+        "Check whether the next step is clear, low-risk, reversible, and inside existing authorization.",
+        "Continue with the next action when safe instead of asking whether to continue.",
+        "Record why user intervention was unnecessary and leave the next recovery route."
+      ],
+      "forbidden_behavior": [
+        "Ask whether to continue when next_route is clear and no new authorization is needed.",
+        "Treat polite confirmation as a substitute for executing the known next step."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "judgment.md",
+        "loop.md"
+      ]
+    },
+    {
+      "case_id": "context_pointer_first_intake",
+      "user_prompt": "材料都在 /path/to/project/docs，请按 Complex 读取并推进。",
+      "project_nature": "unknown_at_entry",
+      "expected_triggers": [
+        "context_pointer_first_intake",
+        "current_basis",
+        "resource_boundary",
+        "capability_discovery_cadence_gate",
+        "ask_user_necessity_gate"
+      ],
+      "expected_behavior": [
+        "Treat user-provided paths, files, links, or material locations as context pointers.",
+        "Read and summarize accessible materials directly before asking the user for manual organization.",
+        "Ask for manual action only when access, privacy, account, permission, or real-world judgment blocks AI intake."
+      ],
+      "forbidden_behavior": [
+        "Ask the user to organize accessible files into MD, paste all readable contents, or manually summarize accessible files.",
+        "Ignore provided material locations and proceed from memory."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "search.md",
+        "evidence.md"
+      ]
+    },
+    {
+      "case_id": "independent_review_context_separation",
+      "user_prompt": "请你在同一个 session 里扮演独立评审，客观审查前面的方案。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "independent_review_context_separation",
+        "read_only_audit_subagent_contract",
+        "agent_topology_selection_trace",
+        "human_input_drift_risk"
+      ],
+      "expected_behavior": [
+        "State that same-session roleplay is a diagnostic self-review, not truly independent review.",
+        "Prefer a clean-context reviewer, read-only audit subagent, separate thread, different reviewer, or fact-ledger-only packet when independence matters.",
+        "If forced to stay in the same session, downgrade the claim and record context contamination risk."
+      ],
+      "forbidden_behavior": [
+        "Claim same-session roleplay is an independent review.",
+        "Pass the full biased chat history as the only context for an allegedly independent audit."
+      ],
+      "expected_runtime_records": [
+        "judgment.md",
+        "decision.md",
+        "state.md"
       ]
     }
   ]

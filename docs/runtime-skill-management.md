@@ -21,7 +21,7 @@ Before copying blank templates, check whether a filled golden example is closer 
 
 Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
 
-When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the 8 behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule or golden example before promoting a new protocol mechanism.
+When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the canonical behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule or golden example before promoting a new protocol mechanism.
 
 ## Startup Choice Card
 
@@ -59,12 +59,16 @@ For continuous prompt-based projects, rehydrate the prompt each round before pla
 
 Capability work should not force the user to adjudicate every small tool, depth, or route choice. Complex defaults to `strong_autonomy_with_guardrails`: the agent may decide reversible, low-side-effect project details when the decision can be recovered from state.
 
+Human intervention is also a capability boundary. Asking the user is necessary when the task needs authorization, private access, irreversible action, external write, public voice, payment, publishing, high-risk real-world judgment, or an explicit preference that cannot be inferred. It is not necessary when the agent can safely read provided materials, execute a known low-risk next route, or choose a reversible project-detail path.
+
 The agent may usually decide:
 
 - Whether to deepen, compress, route back, or keep a lightweight refresh.
 - Which candidate capability to select, reject, backlog, or try with a small smoke test.
 - Whether a temporary subagent split, read-only review, or main-thread-only path best fits the current gap.
 - Whether model-discovery work should keep diverging or begin converging based on probes and argument quality.
+- Whether to continue from a clear `next_route` / `round_goal` without asking "whether to continue."
+- Whether to read and summarize user-provided directories, files, links, exports, or material locations directly.
 
 The agent must ask or require manual action before:
 
@@ -74,6 +78,8 @@ The agent must ask or require manual action before:
 - Taking high-risk real-world action or making strong public claims with insufficient evidence.
 
 For strategic or critical decisions, record a short `route_evaluator_reflection_gate` note: selected route, rejected route, reason, highest misjudgment risk, counterexample, and rollback or recovery route. For routine fast decisions, a sentence is enough; do not create a table ritual.
+
+For independent review, do not treat same-session roleplay as independent. Use clean context, a separate thread/reviewer, a read-only audit subagent, or a fact-ledger-only packet when independence matters. Same-session review is useful as diagnostic self-review only, and should be labeled that way.
 
 ## Per-Round Goal Lifecycle
 
@@ -112,6 +118,8 @@ Check only the sources relevant to the current gap:
 - External methods or best practices that can be translated into this project.
 
 Environment-listed does not mean callable. Installable does not mean authorized. A public method does not automatically fit the current project.
+
+User-provided paths, folders, links, screenshots, exports, and file locations are context pointers. Prefer reading the accessible material yourself before requesting manual整理, copy-paste, or summaries. Escalate to `manual_action_required` only when the pointer cannot be accessed, the material is private or account-bound, the user must authorize use, or human judgment is genuinely irreplaceable.
 
 ## Selection Record
 

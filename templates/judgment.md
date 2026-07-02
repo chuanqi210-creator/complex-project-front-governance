@@ -19,6 +19,10 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
 - decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
 - ask_user_needed: yes / no
+- ask_user_necessity: necessary / unnecessary / manual_action_required
+- unnecessary_user_intervention_reason:
+- ai_can_continue_without_user: yes / no
+- human_input_drift_risk: low / medium / high
 - ai_decided_without_user_reason:
 - user_boundary_respected:
 
