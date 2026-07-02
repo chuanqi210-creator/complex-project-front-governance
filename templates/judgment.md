@@ -25,6 +25,9 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - human_input_drift_risk: low / medium / high
 - ai_decided_without_user_reason:
 - user_boundary_respected:
+- continuous_runtime_activation_decision:
+- topology_auto_activation_decision:
+- review_context_reset_decision:
 
 ## Route Choice
 

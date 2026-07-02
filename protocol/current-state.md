@@ -12,12 +12,14 @@ Current narrative:
 
 Current next route:
 
-`use_real_project_transcripts_or_user_feedback_to_improve_behavior_cases_examples_or_core`
+`use_real_project_transcripts_or_user_feedback_to_verify_continuous_runtime_activation_or_stop`
 
 Default decision:
 
 - Do not add new core gates for one-off failures.
 - Prefer behavior cases, transcript review rules, and filled examples before expanding `protocol/core.md`.
+- Treat continuous cadence as active runtime activation: per-beat narrow goal, Loop, route, and safe auto-start of the next queued beat.
+- Reset independent review context every review beat; same-session review is diagnostic only.
 - Keep the active repository free of historical logs and old output packages.
 
 ## Active Behavior Spine

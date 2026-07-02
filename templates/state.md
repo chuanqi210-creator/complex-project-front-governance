@@ -64,6 +64,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - capability permission: local_only / public_web_ok / browser_ok / account_required / API_ok / manual_action_required
 - collaboration choice: main_thread / temporary_subagent / long_running_threads / parallel_review / undecided
 - cadence choice: single_round_then_next_route / continuous_until_stopped
+- continuous_runtime_activation_status: inactive / active / paused_by_boundary / degraded
 - project nature preference or trigger words:
 - autonomy preference or trigger words:
 - evidence or privacy boundary:
@@ -75,6 +76,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - round_goal:
 - core_goal_plan_loop_status:
 - codex_goal_lifecycle_mode: none / per_round_narrow_goal / long_goal_legacy / tool_unavailable
+- next_beat_auto_start: yes / no / blocked_by_boundary
 - current_tool_goal_status: not_used / active / complete / blocked / stale / unknown
 - goal_handoff_carrier: state_next_route / closure_routing / master_prompt / codex_tool_goal / mixed
 - protocol_round_goal:
@@ -87,6 +89,8 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 
 - main thread responsibility:
 - subagents or long-running threads:
+- topology_auto_activation: not_needed / activated / recommended_only / blocked_by_authorization_or_tooling
+- review_context_reset_each_round: not_needed / active / degraded_to_diagnostic
 - current fit:
 - next topology review:
 - adjustment needed:

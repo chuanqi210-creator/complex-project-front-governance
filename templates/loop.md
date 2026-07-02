@@ -10,6 +10,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - codex_goal_lifecycle_mode:
 - current_tool_goal_status:
 - goal_handoff_carrier:
+- continuous_runtime_activation_status:
+- next_beat_auto_start:
 - round_execution_prompt:
 - plan_alignment_to_master_prompt:
 - core_goal_plan_loop_required: yes / no
@@ -34,6 +36,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 - topology review due: yes / no
 - topology decision:
+- topology auto activation:
+- review context reset:
 - capability review due: yes / no
 - capability decision:
 - capability refresh mode: event_triggered / fallback_cap / lightweight_keep
@@ -88,5 +92,6 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - delivery contract updated:
 - recovery record updated:
 - next round_goal:
+- next beat auto-start decision:
 - tool goal close or migration note:
 - next refresh trigger:

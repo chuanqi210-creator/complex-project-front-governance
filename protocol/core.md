@@ -97,7 +97,11 @@ Each round plan must say what comes from:
 - new judgment
 - AI autonomous decision
 
+`continuous_runtime_activation_contract`: when the user prompt or confirmed project prompt selects `连续节拍`, `continuous_until_stopped`, or equivalent wording, continuous cadence is an active execution contract, not a decorative steering word. Each beat must: rehydrate the round prompt, create or record a narrow `round_goal`, run the Loop, score/route, close or migrate the beat, and immediately enter the next low-risk reversible queued beat until a real boundary appears.
+
 `per_round_goal_lifecycle_gate`: do not use one long tool Goal for many rounds. Use a narrow per-round goal. If an old tool Goal is stale or blocked while the project can continue, record `stale_or_blocked_tool_goal`, `goal_refresh_gate`, and `protocol_round_goal`; do not declare the whole project blocked.
+
+If a Codex tool Goal is available and the user has requested continuous Complex execution, use it only for the current beat's narrow objective. When that beat completes and the next route is clear, create or record the next `protocol_round_goal` and continue. Do not wait for a new user message merely to start the next beat.
 
 `continuous_cadence_refresh_gate`: refresh tools, topology, goals, and prompt by event trigger first. Three rounds is only a fallback cap.
 
@@ -116,7 +120,11 @@ Use `capability_type_and_side_effect_gate` and `external_state_write_guard` for 
 
 Use `agent_topology_selection_trace` when work may need main-thread execution, temporary subagents, long-running threads, or review lanes. Use `read_only_audit_subagent_contract` for evidence or conformance review.
 
+`topology_auto_activation_policy`: if the confirmed prompt authorizes strong-autonomy Complex execution and the work clearly benefits from temporary subagents, parallel review, or read-only audit, activate the available low-side-effect topology instead of merely recommending it. Ask the user only for user-owned long-thread creation, unavailable tools, account/API access, external writes, or other real authorization boundaries.
+
 `independent_review_context_separation`: same-session roleplay is diagnostic only. True independent review requires clean context, a separate reviewer/thread, read-only audit subagent, different reviewer/model where available, or a fact-ledger-only packet. Track `human_input_drift_risk` when prior conversation may bias judgment.
+
+`review_context_reset_each_round`: every independent review beat must start from a fresh fact-ledger packet or clean reviewer context. Reusing the full prior conversation is allowed only as same-session diagnostic review and must be labeled as such.
 
 ## 7. Delivery Contract
 

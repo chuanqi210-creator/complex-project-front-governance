@@ -81,9 +81,9 @@ Decision rights are two-sided:
 - Prevent unsafe AI overreach.
 - Prevent unnecessary human intervention.
 
-If the next step is clear, low-risk, reversible, and inside existing authorization, continue and record why the user was not asked. Do not write "next time you say continue" when `next_route` is already queued; either execute the next route now or, if a real turn/tool boundary stops the run, record the recovery route without making user continuation a permission condition. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
+If the next step is clear, low-risk, reversible, and inside existing authorization, continue and record why the user was not asked. Do not write "next time you say continue" when `next_route` is already queued; either execute the next route now or, if a real turn/tool boundary stops the run, record the recovery route without making user continuation a permission condition. If `连续节拍` is selected, start each beat from a narrow `round_goal`, run the Loop, close or migrate the beat, then automatically enter the next queued low-risk beat until a real boundary appears. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
 
-If the user asks for independent review inside the same session, do not claim roleplay is independent. Use clean context, a separate reviewer/thread, read-only audit subagent, or a fact-ledger packet when independence matters. If you stay in the same session, label it as diagnostic self-review.
+If the user asks for independent review inside the same session, do not claim roleplay is independent. Use clean context, a separate reviewer/thread, read-only audit subagent, or a fact-ledger packet when independence matters. Reset review context every independent review beat; if you stay in the same session, label it as diagnostic self-review.
 
 ## When Something Feels Wrong
 
@@ -104,10 +104,11 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 ```text
 请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
-请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；少问我 / 能推进就继续 / 我给目录你自己读；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；少问我 / 能推进就继续 / 我给目录你自己读；自动启用合适子代理 / 只读审核线程 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
 如果缺少我的确认，请给出少量可默认的问题；可逆、低副作用的细节由你自行判断，高风险、授权、外部写入、不可逆动作和公开口径变化再问我。
 如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
 不要用“下次你说继续时再推进”作为默认收尾。若下一拍已 queued 且低风险可逆，默认自动进入下一拍；若受回合或工具边界限制必须暂停，只记录 next_route，不把用户说“继续”当成许可门。
+如果启用连续节拍，每一拍都要建立/记录窄 round_goal，执行 Loop 后自动进入下一拍；若需要独立评审，每一轮审核用清上下文、事实账本或只读审核线程，不把同 session 自评说成独立评审。
 本轮只抓一个最高杠杆问题，用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
 ```

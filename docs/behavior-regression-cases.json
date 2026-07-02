@@ -7,6 +7,7 @@
     "model_discovery_protect_divergence",
     "evidence_fill_no_extra_divergence",
     "continuous_cadence_rehydrate",
+    "continuous_runtime_activation_after_plan",
     "external_api_guardrail",
     "stale_goal_migration",
     "human_readable_delivery_contract",
@@ -141,6 +142,36 @@
         "prompt.md",
         "state.md",
         "loop.md"
+      ]
+    },
+    {
+      "case_id": "continuous_runtime_activation_after_plan",
+      "user_prompt": "我已经把 Plan 模式设计出的 Complex prompt 作为执行指令使用了，请按连续节拍自动推进，不要每拍都等我授权。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "continuous_runtime_activation_contract",
+        "per_round_goal_lifecycle_gate",
+        "known_next_step_auto_execute_rule",
+        "topology_auto_activation_policy",
+        "review_context_reset_each_round"
+      ],
+      "expected_behavior": [
+        "Treat confirmed continuous cadence as an execution contract, not a remembered keyword.",
+        "Create or record a narrow round_goal for the current beat, close or migrate it, then auto-start the next queued low-risk beat.",
+        "Activate available low-side-effect subagent, parallel-review, or read-only audit topology when it clearly helps.",
+        "Reset independent review context every review beat with clean context, read-only audit, or fact-ledger packet."
+      ],
+      "forbidden_behavior": [
+        "Output only a plan and wait for user authorization despite a clear low-risk next route.",
+        "Treat continuous cadence as a phrase in the prompt rather than a runtime loop.",
+        "Call same-session review independent or reuse the full prior chat as the audit context.",
+        "Only recommend subagents or review lanes when they are available, useful, authorized, and low side effect."
+      ],
+      "expected_runtime_records": [
+        "prompt.md",
+        "state.md",
+        "loop.md",
+        "judgment.md"
       ]
     },
     {
