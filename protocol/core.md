@@ -81,10 +81,11 @@ Do not end a continuous-cadence response with "next time you say continue" or eq
 `complex_source_resolution` runs before protocol scanning. Do not assume Complex lives inside the downstream target repository. Resolve sources in this order:
 
 1. explicit user-provided Complex path or repository
-2. current authoritative local workspace when available: `/Users/chuchenqidawang/Documents/complex-project-front-governance`
-3. sibling/local repository names such as `complex-project-front-governance` or `complex-project-continuous-governance`
-4. target-repository absorbed adapters/manifests only as downstream evidence, not as the authoritative Complex source
-5. ask the user for the Complex path if none of the above is accessible
+2. configured environment path such as `COMPLEX_HOME`
+3. current authoritative local workspace when available: `/Users/chuchenqidawang/Documents/complex-project-front-governance`
+4. sibling/local repository names such as `complex-project-front-governance` or `complex-project-continuous-governance`
+5. target-repository absorbed adapters/manifests only as downstream evidence, not as the authoritative Complex source
+6. ask the user for the Complex path if none of the above is accessible
 
 Keep two contexts separate:
 

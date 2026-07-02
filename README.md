@@ -12,6 +12,48 @@ In this local Codex environment, the authoritative Complex workspace is:
 
 When a different project says "scan Complex", do not search only inside that target project. First resolve this authoritative Complex source, then read the target project separately. If the target repo has only `.git` or no `Complex` directory, that means there is no local copy inside the target repo; it does not mean Complex is unavailable.
 
+## Install And Deploy
+
+Complex is normally installed once as a separate local repository. Do not copy the whole Complex tree into every project. Keep one authoritative Complex workspace, then point each target project to it.
+
+Recommended install:
+
+```bash
+mkdir -p ~/Documents
+git clone https://github.com/chuanqi210-creator/complex-project-continuous-governance.git \
+  ~/Documents/complex-project-front-governance
+cd ~/Documents/complex-project-front-governance
+python3 tools/check_behavior_regression_pack.py
+python3 tools/review_behavior_transcript.py --validate-rules
+python3 tools/test_verify_complex_integrity.py
+python3 tools/verify_complex_integrity.py
+```
+
+Optional shell configuration:
+
+```bash
+export COMPLEX_HOME="$HOME/Documents/complex-project-front-governance"
+```
+
+Update an existing install:
+
+```bash
+cd "${COMPLEX_HOME:-$HOME/Documents/complex-project-front-governance}"
+git pull --ff-only
+python3 tools/verify_complex_integrity.py
+```
+
+Use Complex from another project by telling the agent where Complex is installed:
+
+```text
+请扫描 Complex 并为当前项目设计 prompt。
+Complex 权威来源是：/absolute/path/to/complex-project-front-governance
+目标项目是：/absolute/path/to/target-project
+请分开读取 complex_source 和 target_project_source。
+```
+
+If `COMPLEX_HOME` is set, the agent may use it as the Complex source. If the target project has no `Complex` directory, the agent should still read the installed Complex workspace instead of declaring Complex missing.
+
 ## Current Entrypoints
 
 - Core protocol: `protocol/core.md`
