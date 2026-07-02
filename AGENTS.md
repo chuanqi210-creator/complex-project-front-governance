@@ -41,7 +41,7 @@ This project is the current authoritative workspace for the Complex project cont
 
 - Treat `templates/` as optional landing pads for new projects: state, evidence, decision, search, question, prompt, framing, argument, judgment, loop, and delivery records.
 - Prefer the filled golden examples in `docs/examples/` when teaching a new project how Runtime Kit records should look. Do not make users infer usage from empty templates alone.
-- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` in addition to recovery verification.
+- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` and `python3 tools/review_behavior_transcript.py --validate-rules` in addition to recovery verification.
 - Do not turn Runtime Kit templates into new mandatory protocol fields unless repeated real project failures justify promotion.
 - When bootstrapping a new Complex project, prefer a small runtime skeleton over copying the full protocol into the project workspace.
 - Do not ask users to choose ordinary vs major project modes. Complex always uses Goal/Plan/Loop, scoring, delivery alignment, and recovery; high-risk or high-rework work only raises internal evidence and validation intensity.

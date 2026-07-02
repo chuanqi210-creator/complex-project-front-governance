@@ -21,6 +21,8 @@ Before copying blank templates, check whether a filled golden example is closer 
 
 Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
 
+When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the 8 behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule or golden example before promoting a new protocol mechanism.
+
 ## Startup Choice Card
 
 When a user starts a project by saying "use Complex", "按 Complex 推进", or similar, do not wait for the user to know hidden trigger words. Use the `complex_setup_question_card` from `templates/question.md`, or state safe defaults if the task is low risk.

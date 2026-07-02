@@ -26,6 +26,8 @@ Complex 默认采用“强自治 + 护栏”的自适应深层判断方式。AI 
 
 新增规则必须说明它服务哪一个行为内核步骤；不能映射的规则默认进入经验库、样例或 backlog，不进入主协议主体。删除或合并规则时，也以是否强化这 7 个行为为第一标准。
 
+行为回归不止检查“规则是否写在文档里”。当真实对话、计划或交付暴露执行漂移时，先用 `docs/behavior_regression_cases_20260702.json` 记录案例，再用 `docs/behavior_transcript_review_rules_20260702.json` 和 `tools/review_behavior_transcript.py` 检查真实回复是否命中必需行为、避开禁忌行为；只有 repeated/high-impact 失败无法由案例、样例或 transcript review 承接时，才晋升为主协议规则。
+
 ### 核心循环，不是模式菜单
 
 Complex 的入口不是让用户在“普通项目、重大项目、Plan-only、Goal 模式”之间做分类选择。只要用户要求“按 Complex 推进”，AI 默认都要运行同一条核心循环：
@@ -4050,6 +4052,7 @@ agent_failure_modes:
 104. **rule_density_attention_overload_gap**：协议机制名过密时，模型把注意力放在列举 gate/router/controller 上，而没有先执行 `complex_behavior_kernel` 的 7 个稳定行为。
 105. **behavior_regression_missing_gap**：新增或修改协议行为后，没有更新行为回归用例，导致结构验证通过但真实入口触发仍可能漂移。
 106. **golden_example_missing_gap**：Runtime Kit 只有空模板或字段说明，没有填好的 evidence_fill / model_discovery 等黄金样例，新项目无法快速模仿低摩擦运行现场。
+107. **transcript_behavior_unevaluated_gap**：行为回归用例存在，但没有拿真实 agent 回复或导出对话做 transcript 审查，导致“文档覆盖”被误当成“模型会稳定执行”。
 
 #### 回归样例 agent_regression_cases
 

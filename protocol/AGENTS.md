@@ -37,7 +37,7 @@ This directory contains the current authoritative Complex project continuous-gov
 - Keep protocol artifacts inside this repository when one is clear.
 - Put Runtime Kit templates in `templates/` and runtime capability notes in `docs/runtime-skill-management.md`; model-discovery landing pads belong in `templates/framing.md` and `templates/argument.md`, and adaptive route/depth decisions belong in `templates/judgment.md`.
 - Put filled Runtime Kit examples in `docs/examples/`; use them to reduce onboarding friction before adding more empty template fields.
-- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` along with the recovery verifier.
+- After protocol behavior edits, run `python3 tools/check_behavior_regression_pack.py` and `python3 tools/review_behavior_transcript.py --validate-rules` along with the recovery verifier.
 - Put project-level capability manifests and optional local skills in `.codex/`.
 - Put copied historical records in `docs/history/` and migration notes in `docs/migration/`.
 - Use `/Users/chuchenqidawang/Documents/日常/03_产出_Deliverables/` for general final deliverables that do not belong to a specific research project.

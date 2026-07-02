@@ -7,7 +7,7 @@ Purpose: use high-quality external agent and project-governance work to improve 
 | External work | Useful idea | Complex adoption | Anti-bloat boundary |
 | --- | --- | --- | --- |
 | Anthropic Building Effective Agents | Prefer simple, composable patterns; increase autonomy only when needed; use routing, parallelization, orchestrator-workers, evaluator-optimizer when the task justifies it | Put `complex_behavior_kernel` above the gate list; choose single-thread / subagent / reviewer / route-back by uncertainty and side effect | Do not add orchestration just because a framework exists |
-| Anthropic agent evals | Agent quality needs task cases, graders, transcript/tool checks, and regression tests, not only final-answer review | Add `docs/behavior_regression_cases_20260702.json` and `tools/check_behavior_regression_pack.py` as a first behavior-regression layer | This is not yet an LLM benchmark; it is a maintained case bank and structural guard |
+| Anthropic agent evals | Agent quality needs task cases, graders, transcript/tool checks, and regression tests, not only final-answer review | Add `docs/behavior_regression_cases_20260702.json`, `docs/behavior_transcript_review_rules_20260702.json`, `tools/check_behavior_regression_pack.py`, and `tools/review_behavior_transcript.py` as the first behavior-regression and transcript-review layer | This is not yet a full LLM benchmark; marker review catches obvious omissions and forbidden moves, while human review still judges quality |
 | LangGraph state and interrupts | Durable state plus explicit human interruption for actions that require external input or approval | Strengthen current state/next_route records and `decision_rights_matrix` for ask-user/manual-action boundaries | Do not require LangGraph runtime; borrow the persistence and interrupt concept |
 | OpenAI Agents SDK guardrails, handoffs, tracing | Guardrails define what must be blocked or escalated; handoffs require clear ownership; tracing makes routes inspectable | Keep account/API/external-write boundaries explicit; use subagent/thread contracts; record route summaries and rollback routes | Do not expose hidden reasoning; trace decisions in recoverable summaries |
 | DSPy / GEPA | Prompts and pipelines can be optimized against examples and metrics, not hand-written once forever | Treat `copy_ready_prompt`, `round_execution_prompt`, and behavior cases as optimizable artifacts | Do not install DSPy or create optimization jobs until a real project needs it |
@@ -31,7 +31,7 @@ If a mechanism cannot improve at least one step, it should not be in the core pr
 ## What This Changes Now
 
 - New agents can start from the behavior kernel rather than memorizing every gate.
-- Regression now has a behavior-case pack, not only recovery-chain structure checks.
+- Regression now has a behavior-case pack and transcript review rules, not only recovery-chain structure checks.
 - Runtime Kit has golden examples for evidence-fill and model-discovery tasks.
 - Future edits can delete, merge, or demote mechanisms using the same first-principles test.
 

@@ -2,8 +2,8 @@
 """Check the Complex behavior regression pack.
 
 This is intentionally lightweight: it does not pretend to evaluate an LLM.
-It validates that the project keeps a compact behavior-case bank and that
-the expected trigger names still exist in the active docs/templates.
+It validates that the project keeps a compact behavior-case bank, transcript
+review rules, and trigger names that still exist in active docs/templates.
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "docs" / "behavior_regression_cases_20260702.json"
+TRANSCRIPT_RULES = ROOT / "docs" / "behavior_transcript_review_rules_20260702.json"
 
 DOC_PATHS = [
     ROOT / "README.md",
@@ -60,6 +61,15 @@ def load_pack() -> dict:
         fail(f"invalid JSON in {PACK}: {exc}")
 
 
+def load_transcript_rules() -> dict:
+    if not TRANSCRIPT_RULES.exists():
+        fail(f"missing transcript review rules: {TRANSCRIPT_RULES}")
+    try:
+        return json.loads(TRANSCRIPT_RULES.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(f"invalid JSON in {TRANSCRIPT_RULES}: {exc}")
+
+
 def load_docs() -> str:
     parts: list[str] = []
     missing = [path for path in DOC_PATHS if not path.exists()]
@@ -72,6 +82,7 @@ def load_docs() -> str:
 
 def main() -> None:
     pack = load_pack()
+    transcript_rules = load_transcript_rules()
     docs = load_docs()
 
     cases = pack.get("cases")
@@ -81,6 +92,10 @@ def main() -> None:
     required_ids = set(pack.get("required_case_ids", []))
     if len(required_ids) < 8:
         fail("required_case_ids must cover at least 8 canonical cases")
+
+    transcript_case_rules = transcript_rules.get("case_rules")
+    if not isinstance(transcript_case_rules, dict):
+        fail("transcript rules must contain case_rules object")
 
     seen_ids: set[str] = set()
     for case in cases:
@@ -117,7 +132,32 @@ def main() -> None:
     if missing_required:
         fail("missing required behavior cases: " + ", ".join(sorted(missing_required)))
 
-    print(f"ok behavior_cases={len(cases)} required_cases={len(required_ids)}")
+    rule_ids = set(transcript_case_rules)
+    missing_rules = seen_ids - rule_ids
+    extra_rules = rule_ids - seen_ids
+    if missing_rules or extra_rules:
+        fail(
+            "transcript rule mismatch: "
+            + f"missing={sorted(missing_rules)}, extra={sorted(extra_rules)}"
+        )
+
+    for case_id, rule in transcript_case_rules.items():
+        for key in ["required_marker_groups", "forbidden_marker_groups", "human_review_questions"]:
+            value = rule.get(key)
+            if not isinstance(value, list) or not value:
+                fail(f"{case_id}.{key} must be a non-empty list")
+        minimum_required = rule.get("minimum_required_groups")
+        if not isinstance(minimum_required, int) or minimum_required < 1:
+            fail(f"{case_id}.minimum_required_groups must be a positive integer")
+        if minimum_required > len(rule["required_marker_groups"]):
+            fail(f"{case_id}.minimum_required_groups exceeds required_marker_groups length")
+
+    print(
+        "ok "
+        + f"behavior_cases={len(cases)} "
+        + f"required_cases={len(required_ids)} "
+        + f"transcript_rules={len(rule_ids)}"
+    )
 
 
 if __name__ == "__main__":

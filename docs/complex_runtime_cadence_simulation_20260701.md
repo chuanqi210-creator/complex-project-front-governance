@@ -441,9 +441,33 @@
 - 新协议可检查到 `rule_density_attention_overload_gap`、`behavior_regression_missing_gap` 和 `golden_example_missing_gap`。
 - `docs/behavior_regression_cases_20260702.json` 与两个黄金样例把“写进协议”推进到“能被新代理模仿和检查”。
 
+## Scenario 15: 真实回复需要 transcript 审查
+
+用户提示：
+
+```text
+我觉得这个项目按 Complex 推进后，AI 还是没有按行为内核执行。请检查这段真实回复。
+```
+
+旧风险：
+
+- 结构检查器只能证明行为案例、触发词和模板存在，无法判断真实回复是否遗漏启动提问、项目性质判断、prompt 重水化或交付契约。
+- 维护者误把“文档覆盖”当成“模型稳定执行”。
+
+新期望：
+
+- 先把真实回复映射到一个 canonical case，例如 `setup_card_default`、`model_discovery_protect_divergence` 或 `continuous_cadence_rehydrate`。
+- 运行 `tools/review_behavior_transcript.py --case-id <case> --text-file <response>` 或对应 JSON transcript。
+- 若 marker fail，先更新 transcript review rule、行为案例或黄金样例；只有 repeated/high-impact 且样例无法承接时，才晋升主协议。
+
+模拟结论：
+
+- 新协议可检查到 `transcript_behavior_unevaluated_gap`。
+- 行为回归现在分为结构检查、transcript review、人工复核和未来可选 LLM judge，而不是继续堆 gate。
+
 ## Overall Result
 
-本轮修复把用户体验问题转成 25 个可触发机制：
+本轮修复把用户体验问题转成 26 个可触发机制：
 
 1. `protocol_scan_sequence`
 2. `complex_prompt_bootstrap_gate`
@@ -470,5 +494,6 @@
 23. `behavior_regression_pack`
 24. `golden_runtime_examples`
 25. `mechanism_layering_map`
+26. `behavior_transcript_review`
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

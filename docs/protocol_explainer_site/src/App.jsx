@@ -53,7 +53,7 @@ const coreOutcomes = [
   },
   {
     title: "用样例和回归提高迁移稳定性",
-    text: "行为回归包固定高风险入口，两个 Runtime Kit 黄金样例展示 evidence_fill 与 model_discovery 应该怎样短而可恢复地落地。",
+    text: "行为回归包固定高风险入口，transcript 审查检查真实回复，两个 Runtime Kit 黄金样例展示 evidence_fill 与 model_discovery 怎样短而可恢复地落地。",
     icon: UsersThree,
   },
 ];
@@ -83,6 +83,11 @@ const assets = [
     name: "行为回归包",
     role: "用 8 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior_regression_cases_20260702.json",
+  },
+  {
+    name: "Transcript 审查",
+    role: "对真实 agent 回复做 marker-based 审查，检查必需行为、禁忌行为和人工复核问题。",
+    file: "tools/review_behavior_transcript.py",
   },
   {
     name: "黄金样例",
@@ -143,9 +148,9 @@ const capabilityGroups = [
   },
   {
     title: "行为回归与黄金样例",
-    summary: "用用例和填好样例验证新代理能否稳定落地。",
+    summary: "用用例、真实回复审查和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 8 个高风险入口；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 8 个高风险入口；review_behavior_transcript.py 检查真实回复是否遗漏必需行为或出现禁忌动作；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -612,7 +617,7 @@ function Advantages() {
       <PageTitle
         label="对比优势"
         title="它比普通项目推进更稳，也比厚重流程更轻。"
-        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归包、黄金样例和恢复链防止下一轮重新迷路。"
+        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、黄金样例和恢复链防止下一轮重新迷路。"
       />
 
       <section className="comparison-card">

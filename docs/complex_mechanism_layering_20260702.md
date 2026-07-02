@@ -58,9 +58,11 @@ Use these to teach behavior:
 - `docs/examples/evidence_fill_minimal_runtime/`
 - `docs/examples/model_discovery_minimal_runtime/`
 - `docs/behavior_regression_cases_20260702.json`
+- `docs/behavior_transcript_review_rules_20260702.json`
 - `tools/check_behavior_regression_pack.py`
+- `tools/review_behavior_transcript.py`
 
-When a real project exposes a repeated failure, first add or update a behavior case or golden example. Promote to the core protocol only if the pattern repeats and cannot be handled by examples.
+When a real project exposes a repeated failure, first add or update a behavior case, transcript review rule, or golden example. Promote to the core protocol only if the pattern repeats and cannot be handled by examples or transcript review.
 
 ## Layer 5: History, Release, And Verifier
 
