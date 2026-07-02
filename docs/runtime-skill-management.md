@@ -18,6 +18,7 @@ Before copying blank templates, check whether a filled golden example is closer 
 
 - `docs/examples/evidence_fill_minimal_runtime/` for fixed-model evidence and delivery work.
 - `docs/examples/model_discovery_minimal_runtime/` for unsettled framing and research-model discovery.
+- `docs/examples/independent_review_minimal_runtime/` for fact-ledger review, clean-context review, and same-session diagnostic boundaries.
 
 Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
 
@@ -79,7 +80,7 @@ The agent must ask or require manual action before:
 
 For strategic or critical decisions, record a short `route_evaluator_reflection_gate` note: selected route, rejected route, reason, highest misjudgment risk, counterexample, and rollback or recovery route. For routine fast decisions, a sentence is enough; do not create a table ritual.
 
-For independent review, do not treat same-session roleplay as independent. Use clean context, a separate thread/reviewer, a read-only audit subagent, or a fact-ledger-only packet when independence matters. Same-session review is useful as diagnostic self-review only, and should be labeled that way.
+For independent review, do not treat same-session roleplay as independent. Use clean context, a separate thread/reviewer, a read-only audit subagent, or a fact-ledger-only packet when independence matters. Same-session review is useful as diagnostic self-review only, and should be labeled that way. The minimal example in `docs/examples/independent_review_minimal_runtime/` shows the fact-ledger shape and downgrade labels.
 
 ## Per-Round Goal Lifecycle
 

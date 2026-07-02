@@ -8,9 +8,9 @@
 
 - 当前主协议：`protocol/Complex项目持续治理协议_v3_核心版.md`
 - 当前低摩擦入口：`protocol/Complex项目持续治理_低摩擦用户入口_20260622.md`
-- 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 223. 当前机器看版`
+- 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 224. 当前机器看版`
 - 当前 next route：`continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop`
-- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-222 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制、模型发现层与反早收敛机制、`adaptive_judgment_controller` 自适应深层判断层、行为内核、反人工漂移约束、transcript 审查和真实样本结果记录格式。
+- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-224 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、提示词前置与每轮重水化、每拍窄 Goal 生命周期、模型发现与反早收敛、自适应判断、行为内核、反人工/上下文漂移约束、独立评审黄金样例、transcript 审查和真实样本结果记录格式。
 - 当前重构方向：用 `complex_behavior_kernel` 把厚协议压缩成 7 个稳定行为，并用行为回归包和黄金样例验证新项目能落地，而不是继续堆规则名。
 - GitHub 同步策略：本仓库保留当前权威协议和 Runtime Kit；公开说明、可视化站点、模板和 reusable protocol package 均从该工作区同步。
 
@@ -46,7 +46,7 @@
 - `docs/behavior_review_result_template_20260702.md`：真实回复审查结果记录格式，用于累计 8-12 条 transcript 样本。
 - `docs/real_project_pressure_test_result_template_20260702.md`：端到端真实项目压力测试结果格式，用于 evidence_fill / model_discovery 样本。
 - `docs/complex_new_agent_5_minute_quickstart_20260702.md`：新代理 5 分钟上手版，只保留恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。
-- `docs/examples/`：两个填好的 Runtime Kit 黄金样例，覆盖 evidence_fill 和 model_discovery。
+- `docs/examples/`：三个填好的 Runtime Kit 黄金样例，覆盖 evidence_fill、model_discovery 和 independent_review。
 - `tools/check_behavior_regression_pack.py`：行为回归包结构检查。
 - `tools/review_behavior_transcript.py`：针对真实 agent 回复或导出对话的行为 transcript 审查器。
 - `docs/history/`：从旧目录同步来的历史回归记录、真实项目小题和治理样例。
@@ -79,7 +79,7 @@ AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问
 6. 按交付对象输出。
 7. 留下 next_route 和恢复线索。
 
-`## 223. 当前机器看版` 是恢复链的最新状态锚点；`complex_behavior_kernel` 是执行层的第一行为锚点。新代理恢复时先确认 223 的 current state 和 next_route，再用 7 步行为内核压缩本轮行动，而不是从第 220 轮 skill 同步记录或长 gate 名单开始。
+`## 224. 当前机器看版` 是恢复链的最新状态锚点；`complex_behavior_kernel` 是执行层的第一行为锚点。新代理恢复时先确认 224 的 current state 和 next_route，再用 7 步行为内核压缩本轮行动，而不是从第 220 轮 skill 同步记录或长 gate 名单开始。
 
 如果是第一次接手 Complex，先读 `docs/complex_new_agent_5_minute_quickstart_20260702.md`，再按任务类型选择黄金样例或 Runtime Kit 模板。
 
@@ -145,10 +145,11 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 - `loop.md`：5-30 分钟小循环、评分和 route-back/execute 判断。
 - `delivery.md`：人看版、机器恢复版、老师/专家/第三方版本的交付契约。
 
-如果不知道怎么填，先看两个黄金样例：
+如果不知道怎么填，先看三个黄金样例：
 
 - `docs/examples/evidence_fill_minimal_runtime/`：模型和指标已定，只补证据、验证和交付边界。
 - `docs/examples/model_discovery_minimal_runtime/`：研究框架未定，先保留候选框架、论据图和可区分探针。
+- `docs/examples/independent_review_minimal_runtime/`：需要客观审查时，用事实账本和清上下文评审区分同 session diagnostic 与真正 independent review。
 
 ### 连续节拍中的每轮 prompt
 
@@ -178,7 +179,7 @@ AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
 python3 tools/test_verify_governance_recovery.py
-python3 tools/verify_governance_recovery.py --preset continuous-self-optimization --latest-heading '## 223. 当前机器看版' --expected-route continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop
+python3 tools/verify_governance_recovery.py --preset continuous-self-optimization --latest-heading '## 224. 当前机器看版' --expected-route continue_self_optimization_with_behavior_transcript_review_real_project_pressure_or_stop
 ```
 
 当前基线要求上述命令分别返回行为包 `ok`、transcript rules `passed: true`、治理测试 `ok` 和恢复验证 `failure_count: 0`。

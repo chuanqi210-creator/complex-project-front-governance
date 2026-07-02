@@ -32,7 +32,7 @@ If a mechanism cannot improve at least one step, it should not be in the core pr
 
 - New agents can start from the behavior kernel rather than memorizing every gate.
 - Regression now has a behavior-case pack and transcript review rules, not only recovery-chain structure checks.
-- Runtime Kit has golden examples for evidence-fill and model-discovery tasks.
+- Runtime Kit has golden examples for evidence-fill, model-discovery, and independent-review tasks.
 - Future edits can delete, merge, or demote mechanisms using the same first-principles test.
 
 ## Sources

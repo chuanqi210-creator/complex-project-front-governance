@@ -37,23 +37,23 @@ const pages = [
 
 const coreOutcomes = [
   {
-    title: "把厚协议压缩成稳定行为",
-    text: "新项目先执行 7 个行为内核：恢复状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量验证、按对象交付、留下恢复线索。",
+    title: "强自治连续推进",
+    text: "AI 默认按 7 个行为内核持续推进：恢复状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量执行、按对象交付、留下 next_route。",
     icon: Target,
   },
   {
-    title: "先分清模型发现还是证据填充",
-    text: "框架未定时保护候选路径和可区分探针；模型与指标已定时直接补证据、验证和交付边界，避免过早收敛或过度发散。",
+    title: "守住证据边界",
+    text: "先分清模型发现、证据填充、混合推进或执行交付；每个主张都要知道证据能支撑到哪一层，不能把材料存在写成结论成立。",
     icon: ShieldCheck,
   },
   {
-    title: "让 AI 动态判断，但守住护栏",
-    text: "可逆、低副作用的路线、工具、Loop 和分工由 AI 自行判断；目标、授权、外部写入、不可逆动作和高风险主张必须回问，也不能把可读材料和已知 next_route 甩回给人。",
+    title: "抗人工与上下文漂移",
+    text: "问人前先证明必要性；能读的材料自己读，清楚的下一步直接走。同 session 自评只算 diagnostic，真正独立评审用事实账本和清上下文。",
     icon: PuzzlePiece,
   },
   {
-    title: "用样例和回归提高迁移稳定性",
-    text: "行为回归包固定高风险入口，transcript 审查检查真实回复，两个 Runtime Kit 黄金样例展示 evidence_fill 与 model_discovery 怎样短而可恢复地落地。",
+    title: "可审查恢复链",
+    text: "行为回归、transcript 审查、黄金样例和机器看版把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
     icon: UsersThree,
   },
 ];
@@ -96,12 +96,12 @@ const assets = [
   },
   {
     name: "5 分钟上手版",
-    role: "让新代理先抓第 223 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
+    role: "让新代理先抓第 224 恢复入口、7 步行为内核、项目性质和最小 Runtime Kit。",
     file: "docs/complex_new_agent_5_minute_quickstart_20260702.md",
   },
   {
     name: "黄金样例",
-    role: "展示 evidence_fill 和 model_discovery 两类项目的最小可用运行现场。",
+    role: "展示 evidence_fill、model_discovery 和 independent_review 三类项目的最小可用运行现场。",
     file: "docs/examples/",
   },
 ];
@@ -160,7 +160,7 @@ const capabilityGroups = [
     title: "行为回归与黄金样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 11 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill 和 model_discovery 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 11 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill、model_discovery 和 independent_review 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -181,7 +181,7 @@ const mechanismSteps = [
   {
     k: "03",
     title: "划清决策权",
-    text: "默认强自治+护栏：AI 处理可逆低副作用细节，目标、授权、不可逆和高风险主张回问。",
+    text: "默认强自治+护栏：AI 处理可逆低副作用细节，目标、授权、不可逆和高风险主张回问；问人前先证明必要性。",
     output: "decision_rights_matrix",
   },
   {

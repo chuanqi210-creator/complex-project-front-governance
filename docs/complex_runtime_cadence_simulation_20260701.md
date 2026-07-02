@@ -439,7 +439,7 @@
 模拟结论：
 
 - 新协议可检查到 `rule_density_attention_overload_gap`、`behavior_regression_missing_gap` 和 `golden_example_missing_gap`。
-- `docs/behavior_regression_cases_20260702.json` 与两个黄金样例把“写进协议”推进到“能被新代理模仿和检查”。
+- `docs/behavior_regression_cases_20260702.json` 与三个黄金样例把“写进协议”推进到“能被新代理模仿和检查”。
 
 ## Scenario 15: 真实回复需要 transcript 审查
 

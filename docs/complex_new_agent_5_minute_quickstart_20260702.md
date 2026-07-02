@@ -4,16 +4,18 @@ Audience: a new Codex/agent thread asked to "use Complex" or "scan Complex and c
 
 Goal: get useful behavior quickly without reading every historical gate.
 
+One-sentence model: Complex is strong-autonomy continuous execution with evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
+
 ## Minute 0-1: Recover The Current Anchor
 
 Read:
 
 - `README.md`
-- latest recovery anchor: `protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` -> `## 223. 当前机器看版`
+- latest recovery anchor: `protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` -> `## 224. 当前机器看版`
 
 Remember:
 
-- `## 223` is the latest recovery state.
+- `## 224` is the latest recovery state.
 - `complex_behavior_kernel` is the execution spine.
 - Historical sections such as `## 220` are useful context, not the current entry.
 
@@ -50,6 +52,7 @@ Use filled examples before blank templates:
 
 - `docs/examples/evidence_fill_minimal_runtime/`
 - `docs/examples/model_discovery_minimal_runtime/`
+- `docs/examples/independent_review_minimal_runtime/`
 
 Minimum records:
 
@@ -61,6 +64,7 @@ Add only what the task needs:
 
 - Evidence-fill: `evidence.md`, `decision.md`, `search.md`.
 - Model-discovery: `framing.md`, `argument.md`, `judgment.md`.
+- Independent review: `fact-ledger.md`, `judgment.md`, `decision.md`.
 - Prompt-based continuity: `prompt.md`.
 
 ## Minute 4-5: Start Low-Friction Execution
@@ -77,6 +81,8 @@ If the user only says "按 Complex 推进", give short defaults instead of a mod
 Then make a narrow `round_goal` and execute the lightest useful next action.
 
 If the user asks for "independent review" inside the same session, do not claim roleplay is independent. Either route to clean context, separate reviewer/thread, read-only audit subagent, or a fact-ledger-only packet; if you stay in the same session, label it as diagnostic self-review.
+
+Use `docs/examples/independent_review_minimal_runtime/fact-ledger.md` as the shape for clean-context review: include artifacts, claims, evidence anchors, decisions, and unresolved questions; exclude full chat momentum, stale drafts, and the prior assistant's confidence unless needed for user-intent evidence.
 
 ## When Something Feels Wrong
 
