@@ -165,7 +165,7 @@
         "Output only a plan and wait for user authorization despite a clear low-risk next route.",
         "Treat continuous cadence as a phrase in the prompt rather than a runtime loop.",
         "Call same-session review independent or reuse the full prior chat as the audit context.",
-        "Only recommend subagents or review lanes when they are available, useful, authorized, and low side effect."
+        "Merely recommend subagents or review lanes instead of activating them when they are available, useful, authorized, and low side effect."
       ],
       "expected_runtime_records": [
         "prompt.md",
