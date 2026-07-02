@@ -28,6 +28,8 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - continuous_runtime_activation_decision:
 - topology_auto_activation_decision:
 - review_context_reset_decision:
+- downstream_activation_reconciliation_decision:
+- residual_auto_beat_decision:
 
 ## Route Choice
 

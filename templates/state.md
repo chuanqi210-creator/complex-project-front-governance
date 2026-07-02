@@ -51,6 +51,10 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - materials_ai_should_read_itself:
 - user_input_classification: fact / preference / authorization / local_correction / goal_change / noise_or_possible_misleading
 - independent_review_context_separation: not_needed / required / degraded_to_same_session_diagnostic
+- downstream_activation_reconciliation: not_needed / pending / complete
+- local_boundary_effect_on_steering_words:
+- residual_auto_beat_available: yes / no
+- residual_auto_beat_type: boundary_contradiction_repair / submission_friction_reduction / non_expansion_verification / exact_operator_handoff / preflight_after_env_var / none
 
 ## User Choices
 

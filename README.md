@@ -34,6 +34,8 @@ The practical default is strong autonomy with guardrails: if the next step is cl
 
 When `连续节拍` is selected, it means runtime activation: each beat should create or record a narrow `round_goal`, run the Loop, route the result, and automatically start the next queued low-risk beat. It is not enough to write a plan that remembers the phrase. If temporary subagents, parallel review, or read-only audit are clearly useful and authorized, the agent should activate the available topology; independent review must use clean context or a fact-ledger packet each review beat.
 
+When Complex is used inside another repository, local project rules can narrow steering words. The agent must reconcile requested steering words against that repo's `AGENTS.md`, `CONTEXT.md`, current state, manifests, stage boards, no-write boundaries, and manual-action records. If a true external-input boundary blocks the main route, the agent should still run allowed residual beats such as boundary contradiction repair, submission-friction reduction, non-expansion verification, or exact operator handoff before pausing.
+
 ## Best Project Prompt
 
 ```text
@@ -78,6 +80,7 @@ Useful steering words:
 - `独立评审 / 客观审查 / 避免上下文污染`
 - `外部工具 / 账号 / API / skill`
 - `只要人看版`
+- `目标仓库边界对账 / 真人工边界 / 剩余可自动小拍`
 
 ## Runtime Kit
 
@@ -115,7 +118,7 @@ pnpm -C docs/protocol_explainer_site build
 
 Expected baseline:
 
-- behavior pack: 12 cases and 12 transcript rules
+- behavior pack: 13 cases and 13 transcript rules
 - integrity verifier: `failure_count: 0`
 - site build: Vite build succeeds
 

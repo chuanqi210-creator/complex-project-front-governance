@@ -29,6 +29,7 @@ This repository is the current authoritative Complex continuous-governance runti
 - Do not use one long Codex tool Goal for many continuous rounds. Store continuity in state, master prompt, and `next_route`; use narrow per-round goals when tool Goals are useful.
 - Treat selected `连续节拍` as an active runtime contract: each beat creates or records a narrow `round_goal`, runs the Loop, routes the result, and starts the next queued low-risk reversible beat until a real boundary appears.
 - If temporary subagents, parallel review, or read-only audit are clearly useful and authorized, activate the available topology rather than only recommending it. Reset context for each independent review beat with a fact ledger, clean reviewer, or read-only audit lane.
+- When applying Complex to another repository, reconcile steering words against that repository's local `AGENTS.md`, `CONTEXT.md`, current state, stage boards, manifests, no-write boundaries, and manual-action records. If a true external-input boundary blocks the main route, run allowed residual beats before pausing: boundary contradiction repair, submission-friction reduction, non-expansion verification, exact operator handoff, or preflight after the required file/env var appears.
 
 ## Runtime Kit
 

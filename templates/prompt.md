@@ -20,6 +20,7 @@ This prompt is an execution contract for one project. It does not replace the Co
 - 自动启用合适子代理 / 只读审核线程 / 每轮清上下文
 - 独立评审 / 客观审查 / 避免上下文污染
 - 外部工具 / 账号 / API / skill
+- 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍
 - 只要人看版
 ```
 
@@ -53,6 +54,7 @@ This prompt is an execution contract for one project. It does not replace the Co
 - Cadence:
 - Continuous runtime activation:
 - Review context reset policy:
+- Downstream activation reconciliation:
 - Project nature and convergence preference:
 - Autonomy and judgment boundary:
 - Evidence, privacy, account, publishing, or manual-action boundary:
@@ -109,6 +111,12 @@ Plan 模式：
 - 若创建用户可见长期线程、新账号/API、外部写入或不可逆动作需要授权：记录 manual_action_required，再回问。
 - 独立评审每一轮都必须清上下文、使用事实账本/只读审核线程/独立 reviewer；同 session 自评只能标为 diagnostic self-review。
 
+目标仓库激活对账：
+- 如果该 prompt 被复制到另一个仓库：先读取目标仓库的 AGENTS.md、CONTEXT.md、当前状态、stage board、manifest、no-write boundary 和 manual_action_required 记录。
+- 对每个 steering word 标记：active_now / active_but_boundary_blocked / overridden_by_project_safety / not_needed_with_reason。
+- 如果本地项目要求真实外部输入、账号、人工标注或 no-write 边界确认：不要把它误判成 Complex 失败，也不要绕过；先执行允许的剩余小拍，包括硬边界矛盾修复、提交摩擦降低、非扩张验证、精确 operator handoff，或在文件/env var 已出现后运行 preflight。
+- 只有没有可逆低风险剩余小拍时才暂停，并给出具体文件、字段、env var、命令和不能替代的原因。
+
 Steering words to preserve:
 - 开启 Plan 模式 / 先规划再执行：
 - 模型发现型 / 先发散研究框架 / 不要早收敛：
@@ -119,6 +127,7 @@ Steering words to preserve:
 - 自动启用合适子代理 / 只读审核线程 / 每轮清上下文：
 - 独立评审 / 客观审查 / 避免上下文污染：
 - 外部工具 / 账号 / API / skill：
+- 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍：
 - 只要人看版：
 
 自适应判断边界：
@@ -161,7 +170,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。
+请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。
 ```
 
 ## Execution Bridge
@@ -199,6 +208,8 @@ Use this section at the start of each continuous round, Plan-mode continuation, 
 - ask_user_needed:
 - topology_auto_activation:
 - review_context_reset_status:
+- downstream_activation_reconciliation:
+- residual_auto_beat:
 - rollback_or_recovery_route:
 
 Rules:

@@ -38,6 +38,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - topology decision:
 - topology auto activation:
 - review context reset:
+- downstream activation reconciliation:
+- residual auto beat:
 - capability review due: yes / no
 - capability decision:
 - capability refresh mode: event_triggered / fallback_cap / lightweight_keep
